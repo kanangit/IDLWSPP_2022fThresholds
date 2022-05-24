@@ -204,3 +204,141 @@ Caused by: org.eclipse.jgit.errors.TransportException: https://github.com/kanang
 	at org.eclipse.jgit.transport.Transport.push(Transport.java:1162)
 	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:153)
 	... 4 more
+!SESSION 2022-05-24 14:48:17.308 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_201
+java.vendor=Azul Systems, Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.perforce.team.core 2 0 2022-05-24 14:48:22.305
+!MESSAGE unable to get manifest version attribute: Not running from jar file: bundleresource://6.fwk434176574:1/com/perforce/p4java/Metadata.class
+
+!ENTRY com.perforce.team.core 2 0 2022-05-24 14:48:22.315
+!MESSAGE unable to get manifest date attribute: Not running from jar file: bundleresource://6.fwk434176574:1/com/perforce/p4java/Metadata.class
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 14:48:22.323
+!MESSAGE P4Java server factory loaded; version: Internal 2010.1 Perforce Development; date: unknown
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 14:48:22.330
+!MESSAGE Using default charset: windows-1252; JVM charset: windows-1252
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 14:48:22.341
+!MESSAGE Checking this Java for symbolic link support...
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 14:48:22.352
+!MESSAGE It seems this Java supports symbolic links.
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 14:48:22.362
+!MESSAGE Symbolic link support at the OS level will be determined at runtime...
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 14:48:22.369
+!MESSAGE initializing system file command helper class: java.io.File
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 14:48:22.377
+!MESSAGE Using default RPC system file command helper: com.perforce.p4java.impl.mapbased.rpc.sys.helper.RpcSystemFileCommandsHelper
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 14:48:22.385
+!MESSAGE setting RPC system file helper to class com.perforce.team.core.p4java.P4JavaSysFileCommandsHelper
+
+!ENTRY org.eclipse.egit.ui 2 0 2022-05-24 14:48:23.589
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'H:\'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui 4 4 2022-05-24 14:50:34.896
+!MESSAGE Plug-in 'org.eclipse.ui.ide' contributed an invalid Menu Extension (Path: 'navigate/goTo' is invalid): goToResource
+
+!ENTRY org.eclipse.ui 4 4 2022-05-24 14:50:34.904
+!MESSAGE Plug-in 'org.eclipse.ui.ide' contributed an invalid Menu Extension (Path: 'navigate' is invalid): org.eclipse.ui.OpenWorkspaceFile
+!SESSION 2022-05-24 15:06:50.022 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_201
+java.vendor=Azul Systems, Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.perforce.team.core 2 0 2022-05-24 15:06:55.786
+!MESSAGE unable to get manifest version attribute: Not running from jar file: bundleresource://6.fwk434176574:1/com/perforce/p4java/Metadata.class
+
+!ENTRY com.perforce.team.core 2 0 2022-05-24 15:06:55.796
+!MESSAGE unable to get manifest date attribute: Not running from jar file: bundleresource://6.fwk434176574:1/com/perforce/p4java/Metadata.class
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:06:55.802
+!MESSAGE P4Java server factory loaded; version: Internal 2010.1 Perforce Development; date: unknown
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:06:55.808
+!MESSAGE Using default charset: windows-1252; JVM charset: windows-1252
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:06:55.815
+!MESSAGE Checking this Java for symbolic link support...
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:06:55.824
+!MESSAGE It seems this Java supports symbolic links.
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:06:55.830
+!MESSAGE Symbolic link support at the OS level will be determined at runtime...
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:06:55.837
+!MESSAGE initializing system file command helper class: java.io.File
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:06:55.844
+!MESSAGE Using default RPC system file command helper: com.perforce.p4java.impl.mapbased.rpc.sys.helper.RpcSystemFileCommandsHelper
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:06:55.850
+!MESSAGE setting RPC system file helper to class com.perforce.team.core.p4java.P4JavaSysFileCommandsHelper
+
+!ENTRY org.eclipse.egit.ui 2 0 2022-05-24 15:06:57.873
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'H:\'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2022-05-24 15:10:10.314 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_201
+java.vendor=Azul Systems, Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.perforce.team.core 2 0 2022-05-24 15:10:32.569
+!MESSAGE unable to get manifest version attribute: Not running from jar file: bundleresource://6.fwk434176574:1/com/perforce/p4java/Metadata.class
+
+!ENTRY com.perforce.team.core 2 0 2022-05-24 15:10:32.581
+!MESSAGE unable to get manifest date attribute: Not running from jar file: bundleresource://6.fwk434176574:1/com/perforce/p4java/Metadata.class
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:10:32.592
+!MESSAGE P4Java server factory loaded; version: Internal 2010.1 Perforce Development; date: unknown
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:10:32.602
+!MESSAGE Using default charset: windows-1252; JVM charset: windows-1252
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:10:32.613
+!MESSAGE Checking this Java for symbolic link support...
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:10:32.624
+!MESSAGE It seems this Java supports symbolic links.
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:10:32.635
+!MESSAGE Symbolic link support at the OS level will be determined at runtime...
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:10:32.646
+!MESSAGE initializing system file command helper class: java.io.File
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:10:32.656
+!MESSAGE Using default RPC system file command helper: com.perforce.p4java.impl.mapbased.rpc.sys.helper.RpcSystemFileCommandsHelper
+
+!ENTRY com.perforce.team.core 1 0 2022-05-24 15:10:32.667
+!MESSAGE setting RPC system file helper to class com.perforce.team.core.p4java.P4JavaSysFileCommandsHelper
+
+!ENTRY org.eclipse.egit.ui 2 0 2022-05-24 15:10:34.335
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'H:\'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui 4 4 2022-05-24 15:10:40.457
+!MESSAGE Plug-in 'org.eclipse.egit.ui' contributed an invalid Menu Extension (Path: 'navigate' is invalid): org.eclipse.egit.ui.commit.OpenCommitAction
