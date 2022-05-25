@@ -5,14 +5,7 @@ PRO driver_an_2022fThresholds_vrn
   curDate='20220525'
   print, curDate
   print, datapath
-  
-  ;ROI
-  leftBorder = 600.0d
-  rightBorder= 1000.0d;
-  yMin = 0.0d;
-  yMax = 1200.0d
-  
-  ;start and end frames  
+  ;start and end frames
   iBegin = 1
   iEnd =  660
   

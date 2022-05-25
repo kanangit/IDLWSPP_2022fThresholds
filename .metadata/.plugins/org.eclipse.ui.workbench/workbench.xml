@@ -11,22 +11,27 @@
 <coolbarLayout>
 <coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="225" y="54"/>
 <coolItem id="com.rsi.idldt.ui.textedit.toolbar" itemType="typeToolBarContribution" x="304" y="54"/>
-<coolItem id="com.rsi.idldt.ui.toolbar.debugTools" itemType="typeToolBarContribution" x="455" y="54"/>
+<coolItem id="com.rsi.idldt.ui.toolbar.debugTools" itemType="typeToolBarContribution" x="466" y="54"/>
 </coolbarLayout>
-<page focus="true" label="Workspace - IDL">
+<page focus="true" label="Workspace - Git Repository Exploring">
 <editors>
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="com.rsi.idldt.proeditor.ProEditor" name="readImageJK.pro" partName="readImageJK.pro" path="D:/kananovich/work/workIA/research/IDLWsps/IDLtask/IDLWSPP_2022fThresholds/anReadImageJK/readImageJK.pro" title="readImageJK.pro" tooltip="anReadImageJK/readImageJK.pro" workbook="DefaultEditorWorkbook">
+<editor id="com.rsi.idldt.proeditor.ProEditor" name="readImageJK.pro" partName="readImageJK.pro" path="D:/kananovich/work/workIA/research/IDLWsps/IDLtask/IDLWSPP_2022fThresholds/anReadImageJK/readImageJK.pro" title="readImageJK.pro" tooltip="anReadImageJK/readImageJK.pro" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/anReadImageJK/readImageJK.pro"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="529" selectionTopPixel="780"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2041" selectionTopPixel="1140"/>
+</editor>
+<editor activePart="true" focus="true" id="com.rsi.idldt.proeditor.ProEditor" name="driver_an_2022fThresholds_vrn.pro" partName="driver_an_2022fThresholds_vrn.pro" path="D:/kananovich/work/workIA/research/IDLWsps/IDLtask/IDLWSPP_2022fThresholds/an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro" title="driver_an_2022fThresholds_vrn.pro" tooltip="an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -63,7 +68,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="com.rsi.idldt.console.IDLConsoleView" activePerspective="com.rsi.idldt.ui.IDLPerspective">
+<perspectives activePart="com.rsi.idldt.console.IDLConsoleView" activePerspective="org.eclipse.egit.ui.GitRepositoryExploring">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="com.rsi.idldt.internal.ui.IDLPerspectiveFactory" id="com.rsi.idldt.ui.IDLPerspective" label="IDL"/>
 <alwaysOnActionSet id="com.rsi.idldt.ui.actionSets.CmdLine"/>
@@ -168,25 +173,35 @@
 <view id="com.rsi.idldt.console.IDLConsoleView"/>
 <view id="org.eclipse.debug.ui.DebugView"/>
 <fastViewBars/>
-<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.ui.internal.ViewStack@3135bf25">&#x0A;<folder activePageID="org.eclipse.egit.ui.RepositoriesView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.egit.ui.RepositoriesView" label="Git Repositories"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<layout>
+<mainWindow>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@3135bf25">
+<folder activePageID="org.eclipse.egit.ui.RepositoriesView" appearance="2" expanded="2">
+<page content="org.eclipse.egit.ui.RepositoriesView" label="Git Repositories"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="org.eclipse.ui.internal.ViewStack@3135bf25">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="org.eclipse.ui.internal.ViewStack@3135bf25">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.121529594" ratioLeft="232" ratioRight="1677" relationship="2" relative="org.eclipse.ui.internal.ViewStack@3135bf25"/>
-<info folder="true" part="bottom" ratio="0.5" ratioLeft="451" ratioRight="451" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.team.ui.GenericHistoryView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
+<info folder="true" part="bottom" ratio="0.5" ratioLeft="451" ratioRight="451" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="com.rsi.idldt.console.IDLConsoleView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
 <page content="org.eclipse.team.ui.GenericHistoryView" label="History"/>
 <page content="org.eclipse.team.sync.views.SynchronizeView" label="Synchronize"/>
 <page content="org.eclipse.egit.ui.StagingView" label="Git Staging"/>
 <page content="org.eclipse.egit.ui.ReflogView" label="Git Reflog"/>
 <page content="com.rsi.idldt.console.IDLConsoleView" label="IDL Console"/>
 <page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
@@ -206,6 +221,7 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" path="/anReadImageJK/readImageJK.pro"/>
 <editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" uri="file:/H:/.gitconfig"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" path="/anReadImageJK/readImageJK.pro"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" path="/an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro"/>
 </editors>
 <item historyLabel="readImageJK.pro" index="0">
 <position info="not_deleted" x="6464" y="0"/>
@@ -213,8 +229,14 @@
 <item historyLabel=".gitconfig" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item active="true" historyLabel="readImageJK.pro" index="2">
+<item historyLabel="readImageJK.pro" index="2">
 <position info="not_deleted" x="2627" y="15"/>
+</item>
+<item historyLabel="readImageJK.pro" index="2">
+<position info="not_deleted" x="2041" y="0"/>
+</item>
+<item active="true" historyLabel="driver_an_2022fThresholds_vrn.pro" index="3">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -233,6 +255,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" name="driver_an_2022fThresholds_vrn.pro" tooltip="an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro">
+<persistable path="/an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro"/>
+</file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name=".gitconfig" tooltip="H:\.gitconfig">
 <persistable uri="file:/H:/.gitconfig"/>
 </file>
