@@ -29,25 +29,23 @@ PRO driver_an_2022fThresholds_vrn
   
   ;exclude all the bad elements of the data:
   indGood = WHERE(FINITE(s.iparticle) $
-    AND FINITE(s.area) AND FINITE(s.X) AND FINITE(s.Y) $ 
-    AND FINITE(s.error))
+    AND FINITE(s.area) AND FINITE(s.X) AND FINITE(s.Y) $
+    AND FINITE(s.stdev))
   iParticleTrim = s.iparticle[indGood]
   areaTrim = s.area[indGood]
   XTrim = s.X[indGood]
   Ytrim = s.Y[indGood]
-  errorTrim = s.error[indGood]
+  errorTrim = s.stdev[indGood]
   
  
   
-  ;select the region of interest:
-  indROI = WHERE(XTrim LE rightBorder AND XTrim GE leftBorder AND Ytrim LE ymax AND Ytrim GE yMin)
-  Iparticle = iParticleTrim[indROI]
-  area = areaTrim[indROI]
-  X = XTrim[indROI]
-  Y = Ytrim[indROI]
-  error = errorTrim [indROI]
-  
-  goodStructur = s
+  ;we need only the data inside the region of interest
+  ind = WHERE(s.X LE rightBorder AND s.X GE leftBorder $
+    AND s.Y LE ymax AND s.Y GE yMin)
+  arrlen = N_ELEMENTS(s.X[ind]);
+  Yroi = yMax - (s.Y[ind] - yMin) ;because the vertical screen coordinates
+  ;are from top to bottom, we make this change of variables
+  time = s.iframe[ind] ;array to track time
   
   stop;
 END

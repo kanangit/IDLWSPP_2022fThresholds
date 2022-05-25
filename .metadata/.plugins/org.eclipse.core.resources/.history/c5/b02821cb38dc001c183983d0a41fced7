@@ -41,13 +41,6 @@ PRO driver_an_2022fThresholds_vrn
   
   ;select the region of interest:
   indROI = WHERE(XTrim LE rightBorder AND XTrim GE leftBorder AND Ytrim LE ymax AND Ytrim GE yMin)
-  Iparticle = iParticleTrim[indROI]
-  area = areaTrim[indROI]
-  X = XTrim[indROI]
-  Y = Ytrim[indROI]
-  error = errorTrim [indROI]
-  
-  goodStructur = s
   
   stop;
 END

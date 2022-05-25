@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;an_2022fThresholds_vrn/sfilter.pro&apos;" deleteContents="false" description="Delete resource &apos;an_2022fThresholds_vrn/sfilter.pro&apos;" element1="/an_2022fThresholds_vrn/sfilter.pro" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1653498254745"/>
+</session>

@@ -47,7 +47,7 @@ PRO driver_an_2022fThresholds_vrn
   Y = Ytrim[indROI]
   error = errorTrim [indROI]
   
-  goodStructur = s
+  goodStructur = s[indGood]
   
   stop;
 END

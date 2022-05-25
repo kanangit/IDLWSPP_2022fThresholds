@@ -1,0 +1,3 @@
+FUNCTION sfilter, s, ind
+RETURN, 0
+END
