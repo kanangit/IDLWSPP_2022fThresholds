@@ -1,6 +1,6 @@
 PRO driver_an_2022fThresholds_vrn
 
-  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220525forP_2022fThresholds\01_code_an_2022fThresholds_vrn\'
+  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220524forP_2022fThresholds\01_code_an_2022fThresholds_vrn\'
 
   curDate='20220525'
   print, curDate
@@ -36,21 +36,13 @@ PRO driver_an_2022fThresholds_vrn
 
 
   ;select the region of interest:
-  indROI = WHERE(s_good.X LE rightBorder AND s_good.X GE leftBorder AND s_good.Y LE ymax AND s_good.Y GE yMin)  
+  indROI = WHERE(s_good.X LE rightBorder AND s_good.X GE leftBorder AND s_good.Y LE ymax AND s_good.Y GE yMin)
   s_ROI = s_select(s_good,indROI)
-  y_temp = yMax - (s_ROI.Y - yMin) ;because the vertical screen coordinates
-    ;are from top to bottom, we make this change of variables
-  ;switch x and y coordinates:
-  s_ROI.Y = s_ROI.X
-  s_ROI.X = y_temp
-
-  
   myFrame = 1;
 
-  FOR myFrame = iBegin, iEnd DO BEGIN
+  for myFrame = iBegin, iEnd do begin
     fname = STRCOMPRESS(coreName+string(myFrame,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
     indMyFrame = WHERE(s_ROI.iFrame eq myFrame)
     dratio = oldplot_defects(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], fname)
-  
-  ENDFOR
-END
+    stop;
+  END

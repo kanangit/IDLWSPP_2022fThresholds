@@ -1,0 +1,48 @@
+PRO driver_an_2022fThresholds_vrn
+
+  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220524forP_2022fThresholds\01_code_an_2022fThresholds_vrn\'
+
+  curDate='20220525'
+  print, curDate
+  print, datapath
+   coreName = STRCOMPRESS('voronoiMap_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
+  ;ROI
+  leftBorder = 600.0d
+  rightBorder= 1000.0d;
+  yMin = 0.0d;
+  yMax = 1000.0d
+  
+  ;start and end frames  
+  iBegin = 1
+  iEnd =  660
+  
+  
+  CD, datapath
+  CD, 'inputs'
+  
+  filenam = DIALOG_PICKFILE(/READ, FILTER = '*.sav')
+  RESTORE, filenam
+  CD, '..'
+  FILE_MKDIR, 'outputs'
+  CD, 'outputs'
+  
+  
+  ;exclude all the bad elements of the data:
+  indGood = WHERE(FINITE(s.iparticle) $
+    AND FINITE(s.area) AND FINITE(s.X) AND FINITE(s.Y) $ 
+    AND FINITE(s.error))
+s_good = s_select(s, indGood)
+  
+ 
+  
+  ;select the region of interest:
+  indROI = WHERE(s_good.X LE rightBorder AND s_good.X GE leftBorder AND s_good.Y LE ymax AND s_good.Y GE yMin)
+  s_ROI = s_select(s_good,indROI)
+myFrame = 1;
+
+fname = STRCOMPRESS(coreName+string(myFrame,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
+indMyFrame = WHERE(s_ROI.iFrame eq myFrame)
+
+dratio = oldplot_defects(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], fname)  
+  stop;
+END

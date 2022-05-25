@@ -6,8 +6,8 @@ FUNCTION oldplot_defects, XmyFrame, YmyFrame, filename
   !p.color = 0
   !p.background = 255
   
-  forceXlen = 1600
-  forceYlen = 900
+  forceXlen = 1100
+  forceYlen = 1200
   screenWidth = forceXlen
   ratio = DOUBLE(forceYlen)/DOUBLE(forceXlen)
   
