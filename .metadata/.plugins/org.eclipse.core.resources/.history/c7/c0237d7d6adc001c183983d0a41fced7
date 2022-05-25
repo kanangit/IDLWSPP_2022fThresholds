@@ -39,11 +39,10 @@ stop
   ;select the region of interest:
   indROI = WHERE(s_good.X LE rightBorder AND s_good.X GE leftBorder AND s_good.Y LE ymax AND s_good.Y GE yMin)
   s_ROI = s_select(s_good,indROI)
-myFrame = 1;
+myFrame = 650;
 
 fname = STRCOMPRESS(coreName+string(myFrame,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
 indMyFrame = WHERE(s_ROI.iFrame eq myFrame)
-
-dratio = oldplot_defects(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], fname)  
+dratio = oldplot_defects(XmyFrame, YmyFrame, filename)  
   stop;
 END
