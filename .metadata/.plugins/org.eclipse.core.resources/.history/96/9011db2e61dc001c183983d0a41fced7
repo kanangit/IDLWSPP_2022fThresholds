@@ -31,16 +31,23 @@ PRO driver_an_2022fThresholds_vrn
   indGood = WHERE(FINITE(s.iparticle) $
     AND FINITE(s.area) AND FINITE(s.X) AND FINITE(s.Y) $ 
     AND FINITE(s.error))
-s_good = s_select(s, indGood)
-stop
+  iParticleTrim = s.iparticle[indGood]
+  areaTrim = s.area[indGood]
+  XTrim = s.X[indGood]
+  Ytrim = s.Y[indGood]
+  errorTrim = s.error[indGood]
   
  
   
   ;select the region of interest:
-  indROI = WHERE(s_good.X LE rightBorder AND s_good.X GE leftBorder AND s_good.Y LE ymax AND s_good.Y GE yMin)
-  s_ROI = s_select(s_good,indROI)
-
-
+  indROI = WHERE(XTrim LE rightBorder AND XTrim GE leftBorder AND Ytrim LE ymax AND Ytrim GE yMin)
+  Iparticle = iParticleTrim[indROI]
+  area = areaTrim[indROI]
+  X = XTrim[indROI]
+  Y = Ytrim[indROI]
+  error = errorTrim [indROI]
+  
+  goodStructur = s
   
   stop;
 END

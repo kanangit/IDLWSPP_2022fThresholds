@@ -37,10 +37,14 @@ stop
  
   
   ;select the region of interest:
-  indROI = WHERE(s_good.X LE rightBorder AND s_good.X GE leftBorder AND s_good.Y LE ymax AND s_good.Y GE yMin)
-  s_ROI = s_select(s_good,indROI)
-
-
+  indROI = WHERE(XTrim LE rightBorder AND XTrim GE leftBorder AND Ytrim LE ymax AND Ytrim GE yMin)
+  Iparticle = iParticleTrim[indROI]
+  area = areaTrim[indROI]
+  X = XTrim[indROI]
+  Y = Ytrim[indROI]
+  error = errorTrim [indROI]
+  
+  goodStructur = s
   
   stop;
 END
