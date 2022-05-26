@@ -14,7 +14,7 @@ PRO driver_an_2022fThresholds_vrn
 
   ;start and end frames
   iBegin = 490
-  iEnd =  614
+  iEnd =  660
 
 
   CD, datapath
@@ -25,7 +25,7 @@ PRO driver_an_2022fThresholds_vrn
   
   s_pulsePos = read_pulse_pos()
   coeffs = POLY_FIT(s_pulsePos.time,s_pulsePos.position,1,/DOUBLE)
-
+  stop
   CD, '..'
   FILE_MKDIR, 'outputs'
   CD, 'outputs'

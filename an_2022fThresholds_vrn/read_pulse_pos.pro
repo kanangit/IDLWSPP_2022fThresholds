@@ -2,7 +2,7 @@ FUNCTION read_pulse_pos, path
 
   numParams = N_Params()
   IF (numParams EQ 0) THEN BEGIN
-    filename = DIALOG_PICKFILE(/READ, FILTER = '*.txt')
+    filename = DIALOG_PICKFILE(/READ, FILTER = '*.csv')
   ENDIF
   IF (numParams EQ 1) THEN BEGIN
     filename = path
