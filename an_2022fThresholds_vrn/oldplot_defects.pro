@@ -1,4 +1,4 @@
-FUNCTION oldplot_defects, XmyFrame, YmyFrame, filename
+FUNCTION oldplot_defects, XmyFrame, YmyFrame, shockPos, filename
 
   DEVICE, GET_DECOMPOSED=old_decomposed
   device, retain=2, decomposed =0
@@ -10,6 +10,11 @@ FUNCTION oldplot_defects, XmyFrame, YmyFrame, filename
   forceYlen = 1200
   screenWidth = forceXlen
   ratio = DOUBLE(forceYlen)/DOUBLE(forceXlen)
+  
+  plot_ybegin = 600;
+  plot_yend = 1000;
+  shockfront_x = [shockPos, shockPos]
+  shockFront_y = [plot_ybegin, plot_yend]
   
   window, 2, xsize = screenWidth, ysize =screenWidth*ratio
 
@@ -27,7 +32,10 @@ FUNCTION oldplot_defects, XmyFrame, YmyFrame, filename
 
   ;  stop
   ;plot,XmyFrame,YmyFrame,psym=3, isotropic=1, xrange = [0,forceXlen], yrange = [0,forceYlen],xstyle = 1, ystyle=1,title = 'Voronoi map for unperturbed liquid'
-  plot,XmyFrame,YmyFrame,psym=3, isotropic=1, xrange = [0,forceXlen], yrange = [0,forceYlen],xstyle = 1, ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0,charthick = 2
+  plot,XmyFrame,YmyFrame,psym=3, isotropic=1, xrange = [0,forceXlen], yrange = [0,forceYlen],xstyle = 1, $
+     ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0, charthick = 2, $
+     /NODATA
+  plots, shockfront_x, shockFront_y
 
   voronXLeftMargin = min(XmyFrame)
   voronXRightMargin = max(XmyFrame)

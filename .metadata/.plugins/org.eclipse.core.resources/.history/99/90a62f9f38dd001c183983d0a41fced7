@@ -13,7 +13,7 @@ PRO driver_an_2022fThresholds_vrn
   yMax = 1000.0d
 
   ;start and end frames
-  iBegin = 490
+  iBegin = 1
   iEnd =  660
 
 
@@ -55,7 +55,7 @@ PRO driver_an_2022fThresholds_vrn
     fname = STRCOMPRESS(coreName+string(myFrame,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
     indMyFrame = WHERE(s_ROI.iFrame eq myFrame)
     pulsePos = coeffs[0] + myFrame * coeffs[1]
-    dratio = oldplot_defects(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], pulsePos, fname)
+    dratio = oldplot_defects(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], fname)
   
   ENDFOR
 END
