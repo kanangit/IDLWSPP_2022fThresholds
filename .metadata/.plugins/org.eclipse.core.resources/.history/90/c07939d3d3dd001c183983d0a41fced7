@@ -14,7 +14,7 @@ PRO driver_an_2022fThresholds_vrn
 
   ;start and end frames
   iBegin = 490
-  iEnd =  550
+  iEnd =  590
 
 
   CD, datapath
