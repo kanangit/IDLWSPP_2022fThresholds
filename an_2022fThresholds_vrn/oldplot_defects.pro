@@ -1,3 +1,5 @@
+;v 1.0
+;2022-05-27
 FUNCTION oldplot_defects, XmyFrame, YmyFrame, shockPos, filename
 
   DEVICE, GET_DECOMPOSED=old_decomposed
@@ -146,8 +148,10 @@ postshock_num_defects = postshock_num_othergons + postshock_num_pentagons + post
 postshock_num_total = postshock_num_hexagons + postshock_num_defects
 postshock_defect_ratio = DOUBLE(postshock_num_defects) / DOUBLE(postshock_num_total)
 
-XYOUTS, -100, 525, STRCOMPRESS('postshock defect ratio = ' + STRING(postshock_defect_ratio, format = '(D4.2)'))
-XYOUTS, 1000, 525, STRCOMPRESS('preshock defect ratio = ' + STRING(preshock_defect_ratio, format = '(D4.2)'))
+XYOUTS, postshock_right_border - 270, 525, STRCOMPRESS('postshock defect ratio = ' + STRING(postshock_defect_ratio, format = '(D4.2)')), $
+  COLOR = 47
+XYOUTS, preshock_left_border + 5, textHeight, STRCOMPRESS('preshock defect ratio = ' + STRING(preshock_defect_ratio, format = '(D4.2)')), $
+  COLOR = 254
 
 ;plotting the shock front position:
 plots, shockfront_x, shockFront_y, THICK = 3
