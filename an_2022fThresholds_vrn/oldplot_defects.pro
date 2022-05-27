@@ -18,12 +18,19 @@ FUNCTION oldplot_defects, XmyFrame, YmyFrame, shockPos, filename
 
   preshock_offset = 50.0
   postshock_offset = 50.0
-
-  shockfront_x = [shockPos, shockPos]
-  shockFront_y = [plot_ybegin, plot_yend]
+  
+  textHeight = 525
 
   postshock_right_border = shockPos - preshock_offset
   preshock_left_border = shockPos + postshock_offset
+  
+  shockfront_x = [shockPos, shockPos]
+  shockFront_y = [textHeight, plot_yend]
+  
+  postshock_right_x = [postshock_right_border, postshock_right_border]
+  postshock_right_y = [textHeight, plot_yend]
+  preshock_left_x = [preshock_left_border, preshock_left_border]
+  preshock_left_y = [textHeight, plot_yend]
 
   forceXlen = 1100
   forceYlen = 1200
@@ -143,7 +150,9 @@ XYOUTS, -100, 525, STRCOMPRESS('postshock defect ratio = ' + STRING(postshock_de
 XYOUTS, 1000, 525, STRCOMPRESS('preshock defect ratio = ' + STRING(preshock_defect_ratio, format = '(D4.2)'))
 
 ;plotting the shock front position:
-plots, shockfront_x, shockFront_y
+plots, shockfront_x, shockFront_y, THICK = 3
+plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
+plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 ; Reset device paramters
 
 ;save the file as tiff:
