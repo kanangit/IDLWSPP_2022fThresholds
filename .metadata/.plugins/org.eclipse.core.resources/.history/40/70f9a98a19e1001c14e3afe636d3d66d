@@ -4,7 +4,7 @@ FUNCTION oldplot_defects, XmyFrame, YmyFrame, shockPos, filename
 
   DEVICE, GET_DECOMPOSED=old_decomposed
   device, retain=2, decomposed =0
-;  loadct, 39
+  loadct, 39
   !p.color = 0
   !p.background = 255
 

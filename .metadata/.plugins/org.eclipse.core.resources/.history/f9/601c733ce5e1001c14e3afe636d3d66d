@@ -1,5 +1,3 @@
-;v. 1.2. Added range selection for pulse position
-
 PRO driver_an_2022fThresholds_vrn
   loadct, 39
 
@@ -21,8 +19,7 @@ PRO driver_an_2022fThresholds_vrn
   
   
   ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 735
-  iEnd_ppulse = 1276
+  iBegin_ppulse = 
 
 
   CD, datapath
@@ -32,8 +29,7 @@ PRO driver_an_2022fThresholds_vrn
   RESTORE, filenam
 
   s_pulsePos = read_pulse_pos()
-  indPpulseFilt = WHERE(s_pulsePos.time GE iBegin_ppulse AND s_pulsePos.time LE iEnd_ppulse)
-  coeffs = POLY_FIT(s_pulsePos.time[indPpulseFilt],s_pulsePos.position[indPpulseFilt],1,/DOUBLE)
+  coeffs = POLY_FIT(s_pulsePos.time,s_pulsePos.position,1,/DOUBLE)
 
   CD, '..'
   FILE_MKDIR, 'outputs'

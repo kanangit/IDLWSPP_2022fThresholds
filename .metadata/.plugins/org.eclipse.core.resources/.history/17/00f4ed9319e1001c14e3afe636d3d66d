@@ -1,11 +1,9 @@
-;v. 1.2. Added range selection for pulse position
-
 PRO driver_an_2022fThresholds_vrn
-  loadct, 39
+loadct, 39
 
-  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid61\20220601forP_2022fThresholds\01_code_an_2022fThresholds_vrn\'
+  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid59\20220531forP_2022fThresholds\01_code_an_2022fThresholds_vrn\'
 
-  curDate='20220601'
+  curDate='20220531'
   print, curDate
   print, datapath
   coreName = STRCOMPRESS('voronoiMap_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
@@ -17,12 +15,7 @@ PRO driver_an_2022fThresholds_vrn
 
   ;start and end frames
   iBegin = 500
-  iEnd =  1320
-  
-  
-  ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 735
-  iEnd_ppulse = 1276
+  iEnd =  880
 
 
   CD, datapath
@@ -30,10 +23,9 @@ PRO driver_an_2022fThresholds_vrn
 
   filenam = DIALOG_PICKFILE(/READ, FILTER = '*.sav')
   RESTORE, filenam
-
+  
   s_pulsePos = read_pulse_pos()
-  indPpulseFilt = WHERE(s_pulsePos.time GE iBegin_ppulse AND s_pulsePos.time LE iEnd_ppulse)
-  coeffs = POLY_FIT(s_pulsePos.time[indPpulseFilt],s_pulsePos.position[indPpulseFilt],1,/DOUBLE)
+  coeffs = POLY_FIT(s_pulsePos.time,s_pulsePos.position,1,/DOUBLE)
 
   CD, '..'
   FILE_MKDIR, 'outputs'
@@ -49,15 +41,15 @@ PRO driver_an_2022fThresholds_vrn
 
 
   ;select the region of interest:
-  indROI = WHERE(s_good.X LE rightBorder AND s_good.X GE leftBorder AND s_good.Y LE ymax AND s_good.Y GE yMin)
+  indROI = WHERE(s_good.X LE rightBorder AND s_good.X GE leftBorder AND s_good.Y LE ymax AND s_good.Y GE yMin)  
   s_ROI = s_select(s_good,indROI)
   y_temp = yMax - (s_ROI.Y - yMin) ;because the vertical screen coordinates
-  ;are from top to bottom, we make this change of variables
+    ;are from top to bottom, we make this change of variables
   ;switch x and y coordinates:
   s_ROI.Y = s_ROI.X
   s_ROI.X = y_temp
 
-
+  
   myFrame = 1;
 
   FOR myFrame = iBegin, iEnd DO BEGIN
@@ -65,6 +57,6 @@ PRO driver_an_2022fThresholds_vrn
     indMyFrame = WHERE(s_ROI.iFrame eq myFrame)
     pulsePos = coeffs[0] + myFrame * coeffs[1]
     dratio = oldplot_defects(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], pulsePos, fname)
-
+  
   ENDFOR
 END

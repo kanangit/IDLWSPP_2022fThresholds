@@ -1,11 +1,9 @@
-;v. 1.2. Added range selection for pulse position
-
 PRO driver_an_2022fThresholds_vrn
   loadct, 39
 
-  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid61\20220601forP_2022fThresholds\01_code_an_2022fThresholds_vrn\'
+  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid61\20220531forP_2022fThresholds\01_code_an_2022fThresholds_vrn\'
 
-  curDate='20220601'
+  curDate='20220531'
   print, curDate
   print, datapath
   coreName = STRCOMPRESS('voronoiMap_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
@@ -17,12 +15,7 @@ PRO driver_an_2022fThresholds_vrn
 
   ;start and end frames
   iBegin = 500
-  iEnd =  1320
-  
-  
-  ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 735
-  iEnd_ppulse = 1276
+  iEnd =  1056
 
 
   CD, datapath
@@ -32,8 +25,7 @@ PRO driver_an_2022fThresholds_vrn
   RESTORE, filenam
 
   s_pulsePos = read_pulse_pos()
-  indPpulseFilt = WHERE(s_pulsePos.time GE iBegin_ppulse AND s_pulsePos.time LE iEnd_ppulse)
-  coeffs = POLY_FIT(s_pulsePos.time[indPpulseFilt],s_pulsePos.position[indPpulseFilt],1,/DOUBLE)
+  coeffs = POLY_FIT(s_pulsePos.time,s_pulsePos.position,1,/DOUBLE)
 
   CD, '..'
   FILE_MKDIR, 'outputs'
