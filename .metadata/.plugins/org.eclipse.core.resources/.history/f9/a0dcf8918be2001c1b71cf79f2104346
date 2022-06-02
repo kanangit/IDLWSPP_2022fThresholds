@@ -16,7 +16,7 @@ PRO driver_an_2022fThresholds_vrn
   yMax = 1000.0d
 
   ;start and end frames
-  iBegin = 600
+  iBegin = 922
   iEnd =  1700
   
   

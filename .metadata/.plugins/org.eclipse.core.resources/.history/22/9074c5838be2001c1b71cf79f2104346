@@ -16,13 +16,13 @@ PRO driver_an_2022fThresholds_vrn
   yMax = 1000.0d
 
   ;start and end frames
-  iBegin = 600
-  iEnd =  1700
+  iBegin = 500
+  iEnd =  1320
   
   
   ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 922
-  iEnd_ppulse = 1495
+  iBegin_ppulse = 710
+  iEnd_ppulse = 1176
 
 
   CD, datapath
