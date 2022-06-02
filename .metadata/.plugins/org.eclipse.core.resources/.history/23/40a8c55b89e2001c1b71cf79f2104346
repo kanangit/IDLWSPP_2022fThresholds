@@ -3,7 +3,7 @@
 PRO driver_an_2022fThresholds_vrn
 
 
-  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid61\20220602forP_2022fThresholds\01_code_an_2022fThresholds_vrn\'
+  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid61\20220601forP_2022fThresholds\01_code_an_2022fThresholds_vrn\'
 
   curDate='20220602'
   print, curDate
@@ -21,8 +21,8 @@ PRO driver_an_2022fThresholds_vrn
   
   
   ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 710
-  iEnd_ppulse = 1176
+  iBegin_ppulse = 735
+  iEnd_ppulse = 1276
 
 
   CD, datapath
