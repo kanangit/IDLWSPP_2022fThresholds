@@ -13,8 +13,8 @@ pro driver_an_2022fThresholds_plgn
   yMax = 1000.0d
 
   ;start and end frames
-  iBegin = 521
-  iEnd =  551
+  iBegin = 1
+  iEnd =  660
 
   forceXlen = 1100
   forceYlen = 1200
@@ -28,8 +28,8 @@ pro driver_an_2022fThresholds_plgn
   ratio = DOUBLE(plot_yend - plot_ybegin)/DOUBLE(plot_xend - plot_xbegin)
 
   ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 521
-  iEnd_ppulse = 624
+  iBegin_ppulse = 513
+  iEnd_ppulse = 614
 
 
   CD, datapath
@@ -376,7 +376,8 @@ pro driver_an_2022fThresholds_plgn
     image24[2,*,*] = b[scaled]
     image24 = TVRD(True=1)
     image24 = Reverse(image24, 3)
-    fname = STRCOMPRESS(coreName+string(frameNumber,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
+    
+    fname = datapath+ '\outputs\images\' + STRCOMPRESS(coreName+string(frameNumber,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
 
     Write_Tiff, fname, image24, 1
 
