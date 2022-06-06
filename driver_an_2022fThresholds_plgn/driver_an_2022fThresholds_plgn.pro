@@ -13,8 +13,8 @@ pro driver_an_2022fThresholds_plgn
   yMax = 1000.0d
 
   ;start and end frames
-  iBegin = 300
-  iEnd =  310
+  iBegin = 521
+  iEnd =  551
 
   forceXlen = 1100
   forceYlen = 1200
@@ -96,6 +96,22 @@ pro driver_an_2022fThresholds_plgn
 
 
   for frameNumber=startFrame,endFrame do begin
+
+    preshock_offset = 50.0
+    postshock_offset = 50.0
+
+    textHeight = 525
+    shockPos = coeffs[0] + frameNumber * coeffs[1]
+    postshock_right_border = shockPos - preshock_offset
+    preshock_left_border = shockPos + postshock_offset
+
+    shockfront_x = [shockPos, shockPos]
+    shockFront_y = [textHeight, plot_yend]
+
+    postshock_right_x = [postshock_right_border, postshock_right_border]
+    postshock_right_y = [textHeight, plot_yend]
+    preshock_left_x = [preshock_left_border, preshock_left_border]
+    preshock_left_y = [textHeight, plot_yend]
 
     indMyFrame = where(s_ROI.iFrame EQ frameNumber)
 
@@ -344,6 +360,11 @@ pro driver_an_2022fThresholds_plgn
     printf,3,Defect_numbers
 
     oplot, X,Y, psym = 3, symsize = 1
+
+    ;plotting the shock front position:
+    plots, shockfront_x, shockFront_y, THICK = 3
+    plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
+    plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 
     ;The following 'TVRD', 'TVLCT' and 'WRITETIFF' routines are peculiar to IDL.
     ;They are used below to save tiff images of polygon construction.
@@ -1270,6 +1291,11 @@ pro HexagonCountandPlot,defectClassification,unt,out
     numHexagons = 0
   endelse
   out = numHexagons
+
+
+
+
+
 end
 
 ;User defined procedure 10
