@@ -1,162 +1,91 @@
 pro driver_an_2022fThresholds_plgn
 
+  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220606forP_2022fThresholds_plgn\02_code_an_2022fThresholds_plgn\'
 
-  ;Supplementary material to W. D. Suranga Ruhunusiri, J. Goree, Yan Feng, and Bin Liu,
-  ;   "Polygon construction to investigate melting in 2D strongly-coupled dusty plasma",
-  ;   to be published in Physical Review E, 2011
-  ;
-  ;This is the source code that we used to identify geometrical defects in dusty plasma,
-  ;but it will also be useful for other physical systems and simulated systems.
-  ;
-  ;About the language:
-  ;   This code is written in IDL, and has been tested with IDL version 7.1;
-  ;   Hints are provided below for readers interested in porting this code to another language.
-  ;   We have also provided a source code in MATLAB in the supplementay material as an example of a ported code.
-  ;
-  ;The polygon construction method is based on M. A. Glaser and N. A. Clark,
-  ;   Phys. Rev. A 41, 4585 (1990), Adv. Chem. Phys. 83, 543 (1993).
-  ;
-  ;Organization of the code is as follows:
-  ;1.Read a particle position data file (INPUT1) in text format. An example input data file is provided with this distribution.
-  ;
-  ;2.Identify bonds between particle positions by Delaunay triangulation. Here, we use the TRIANGULATION routine in IDL, but
-  ;   the reader who wishes to port to another language can use another Delaunay triangulation routine.
-  ;
-  ;3.Bonds are removed that are opposite to bond angles greater than a user-adjustable threshold, (INPUT3).
-  ;   The value of this threshold is hardwired in the code; as written here it is 75 degrees, but the user may change this.
-  ;   This method of removing bonds is one of two methods used by Glaser and Clark (1990,1993); their other method (removing bonds longer
-  ;   than a certain threshold) is not implemented here.
-  ;   Here and elsewhere in the code we use an IDL routine WHERE which searches the contents of an array for a particular value
-  ;   and returns the corresponding indices; users wishing to port the code will need to find a suitable substitute.
-  ;
-  ;4.Diagnostics peculiar to IDL
-  ;   We generate one image, for each set of input particle positions. This image is a color presentation of the polygons.
-  ;   As an example of this image, see Fig. 2(b) and (c) in our paper.
-  ;   Porting this graphics portion of the code to another language should not be difficult.
-  ;
-  ;5.Diagnostics not peculiar to IDL
-  ;   A text file is output, and it contains:
-  ;      - counts of the different kinds of polygons (triangles, quadrilaterals, pentagons, etc.)
-  ;      - counts of vertex types (Type A, Type B, etc., as described in our paper and by Glaser and Clark.)                                                         }
-  ;
-  ;                                                       }
-  ;ALL the INPUTS, other than the input text file for particle positions, are HARDWIRED into this code. This code has no user dialog.                                                                         }
-  ;
-  ;Before executing the code, the user should edit (as required) all INPUTS 1 through 8, as listed below:                                      }
-  ;
-  ;
-  ;INPUT1: data_file : Enter the path of a txt file containing three columns
-  ;                     (First column contains the X coordinates of particles,
-  ;                      second column contains the Y coordinates of particles,
-  ;                      third column contains the frame number
-  ;                      where the columns are delimited by an arbitrary number of spaces.
-  ;                      This txt file has no header line)
-  ;
-  ;                      as an example of a line in this text file:
-  ;
-  ;                      491.868         20.5              0
-  ;
-  ;                      where the first two columns are the floating-point X and Y coordinates of a particle, and the third column is an integer for the "frame number".
-  ;                      Here, the term "frame number" corresponds to a snapshot in time. Typically, one would have several thousand particles for each frame number.                                                                              }
-  ;
-  ;INPUT2: length_data_file(integer): the number of rows in the above txt file
-  ;
-  ;
-  ;INPUT3: begin_frame (integer): the first frame number in the above txt file
-  ;        For example, in the sample particle position data file given (particle_positions.txt) has particle position
-  ;        data for fames 0 through 1
-  ;        So you should specify 0 for this input
-  ;
-  ;INPUT4: last_frame (integer):the last frame number in the above txt file
-  ;        For example, in the sample particle position data file given (particle_positions.txt) has particle position
-  ;        data for fames 0 through 1
-  ;        So you should specify 1 for this input
-  ;
-  ;INPUT5: angleThreshold(float):the threshold angle for bond removal
-  ;        Default value is set at 75.0 degrees as suggested by M. A. Glaser and N. A. Clark
-  ;
-  ;INPUT6: image_file(string): folder location to save polygon construction images.
-  ;        The format of the images are TIF.
-  ;
-  ;INPUT7: fname_defect_stat(string): folder location and a name for a txt file to save geometrical defect counts for
-  ;        polygon construction images
-  ;
-  ;        as an example of a line in this text file:
-  ;
-  ;        0.000000      1212.00         2108.00         75.0000              7.00000         0.000000
-  ;
-  ;        First column- frame number, second column- number of particles, third column- number of triangles,
-  ;        fourth column- number of quadrilaterals, fifth column- number of pentagons
-  ;        sixth column- number of hexagons.
-  ;
-  ;INPUT8: fname_vertex_stat(string): folder location and a name for a txt file to save vertex type counts for
-  ;        polygon construction images
-  ;
-  ;        as an example of a line in this text file:
-  ;
-  ;        0.0        851.0        37.0        21.0   ....   0.0
-  ;
-  ;        First column- frame number, second column- total number of vertices, third column- number of A vertices,
-  ;        fourth column- number of B vertices, etc...
-  ;
-  ;
-  ;After reading the manuscript and with some programming knowledge the reader will be able to
-  ;understand the self-explanatory variables.
-  ;
+  curDate='20220606'
+  print, curDate
+  print, datapath
+  coreName = STRCOMPRESS('voronoiMap_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
+  ;ROI
+  leftBorder = 600.0d
+  rightBorder= 1000.0d;
+  yMin = 0.0d;
+  yMax = 1000.0d
 
-  forceXlen = 1600
-  forceYlen = 900
+  ;start and end frames
+  iBegin = 300
+  iEnd =  310
+
+  forceXlen = 1100
+  forceYlen = 1200
+  screenWidth = 1200
+
+  plot_ybegin = 600;
+  plot_yend = 1000;
+  plot_xbegin = 0
+  plot_xend = 1100
   screenWidth = forceXlen
+  ratio = DOUBLE(plot_yend - plot_ybegin)/DOUBLE(plot_xend - plot_xbegin)
 
-  ;INPUT1
-  data_file = '\\BRECKENRIDGE4\expAnalysisBackup\c_14226_vid56\20181201temp\04_code_polygon_construction_IDL\inputs\ff1-660_20181119positionTrimmedForVid056_6400solid_15427284684POLYGON.txt'
+  ;start and end frames for pulse postition fitting:
+  iBegin_ppulse = 521
+  iEnd_ppulse = 624
 
-  ;INPUT2
-  length_data_file = 1010884
 
-  ;INPUT3
-  startFrame = 550
+  CD, datapath
+  CD, 'inputs'
 
-  ;INPUT4
-  endFrame = 551
+  filenam = DIALOG_PICKFILE(/READ, FILTER = '*.sav')
+  RESTORE, filenam
+
+  s_pulsePos = read_pulse_pos()
+  indPpulseFilt = WHERE(s_pulsePos.time GE iBegin_ppulse AND s_pulsePos.time LE iEnd_ppulse)
+  coeffs = POLY_FIT(s_pulsePos.time[indPpulseFilt],s_pulsePos.position[indPpulseFilt],1,/DOUBLE)
+
+  CD, '..'
+  FILE_MKDIR, 'outputs'
+  CD, 'outputs'
+
+
+  ;exclude all the bad elements of the data:
+  indGood = WHERE(FINITE(s.iparticle) $
+    AND FINITE(s.area) AND FINITE(s.X) AND FINITE(s.Y) $
+    AND FINITE(s.error))
+  s_good = s_select(s, indGood)
+
+
+
+  ;select the region of interest:
+  indROI = WHERE(s_good.X LE rightBorder AND s_good.X GE leftBorder AND s_good.Y LE ymax AND s_good.Y GE yMin)
+  s_ROI = s_select(s_good,indROI)
+  y_temp = yMax - (s_ROI.Y - yMin) ;because the vertical screen coordinates
+  ;are from top to bottom, we make this change of variables
+  ;switch x and y coordinates:
+  s_ROI.Y = s_ROI.X
+  s_ROI.X = y_temp
+
+
+
+
+  startFrame = iBegin
+  endFrame = iEnd
 
   ;INPUT5
   angleThreshold = 75.0
 
   ;INPUT6
-  image_file = '\\BRECKENRIDGE4\expAnalysisBackup\c_14226_vid56\20181201temp\04_code_polygon_construction_IDL\outputs'
+  image_file = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220606forP_2022fThresholds_plgn\02_code_an_2022fThresholds_plgn\outputs\'
 
   ;INPUT7
-  fname_defect_stat = '\\BRECKENRIDGE4\expAnalysisBackup\c_14226_vid56\20181201temp\04_code_polygon_construction_IDL\outputs\Defect_stat.txt'
+  fname_defect_stat = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220606forP_2022fThresholds_plgn\02_code_an_2022fThresholds_plgn\outputs\Defect_stat.txt'
 
   ;INPUT8
-  fname_vertex_stat = '\\BRECKENRIDGE4\expAnalysisBackup\c_14226_vid56\20181201temp\04_code_polygon_construction_IDL\outputs\Vertex_stat.txt'
+  fname_vertex_stat = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220606forP_2022fThresholds_plgn\02_code_an_2022fThresholds_plgn\outputs\Vertex_stat.txt'
 
 
-  ;The following 'CLOSE' procedure is peculiar to IDL.
-  ;The CLOSE procedure closes the file units specified as arguments.
-  ;It is used here to close the files 'data_file','fname_defect_stat' and 'fname_vertex_stat', if they are already open.
-  close,1 ;File unit 1 will be assigned to 'data_file'
   close,3 ;File unit 3 will be assigned to 'fname_defect_stat'
   close,4 ;File unit 4 will be assigned to 'fname_vertex_stat'
 
-  length = length_data_file
-
-  ;The following 'FLTARR' function is peculiar to IDL.
-  ;The FLTARR function creates a floating-point vector or array of the specified dimensions.
-  ;It is used here to create a floating-point array with 3 columns and 'length' of rows.
-  tempPositions = fltarr(3,length)
-
-  ;The following 'OPENR' procedure is peculiar to IDL.
-  ;OPENR opens an existing file for input only.
-  ;It is used here to open 'data_file' for input only.
-  openr,1,data_file
-
-  ;The followig 'READF' procedure is peculiar to IDL.
-  ;The READ procedure performs formatted input into variables.
-  ;It is used here to read 'data_file' to the array named 'tempPositions'.
-  readf,1,tempPositions
-  close,1
 
   ;The following 'OPENW' procedure is peculiar to IDL.
   ;OPENW opens a new file for output. If the file exists, its old contents are destroyed.
@@ -165,45 +94,28 @@ pro driver_an_2022fThresholds_plgn
 
   openw,4,fname_vertex_stat ;File unit 4 is assigned to 'Vertex_stat.txt'
 
-  arrayParticlePositions = tempPositions
 
   for frameNumber=startFrame,endFrame do begin
 
-    ;The following 'WHERE' function is peculiar to IDL.
-    ;WHERE selects elements of an array satisfying a given criteria.
-    ;It is used here to find the matrix row indices of the second column in matrix 'arrayParticlePositions'
-    ;where the matrix element has a value equal to 'frameNumber'. This is useful in selecting the X and Y coordinates
-    ;of particles in the current frame.
-    row = where(arrayParticlePositions(2,*) EQ frameNumber)
+    indMyFrame = where(s_ROI.iFrame EQ frameNumber)
 
-    Xtemp= arrayParticlePositions(0,row) ;X coordinates of particle positions in the current frame.
-    Ytemp= arrayParticlePositions(1,row) ;Y coordinates of particle positions in the current frame.
+    Xtemp= s_ROI.X[indMyFrame] ;X coordinates of particle positions in the current frame.
+    Ytemp= s_ROI.Y[indMyFrame] ;Y coordinates of particle positions in the current frame.
 
-    ;The following 'SIZE' function is peculiar to IDL.
-    ;SIZE function returns size and type information for its argument.
-    ;It is used here to find the number of rows in the matrix 'Xtemp'.
-    ;The number of rows in matrix 'Xtemp' is equal to the total number of particles in the current frame.
+
     numberOfParticles = size(Xtemp,/N_ELEMENTS) ;Total number of particle coordinates in the current frame.
 
     X = fltarr(numberOfParticles,1)
     Y = fltarr(numberOfParticles,1)
 
     for particle=0,numberOfParticles-1 do begin
-      X(particle,0) = Xtemp(0,particle)
-      Y(particle,0) = Ytemp(0,particle)
+      X(particle,0) = Xtemp[particle]
+      Y(particle,0) = Ytemp[particle]
     endfor
-
-    ;The following 'MAX' function is peculiar to IDL.
-    ;It is used below to find the maximum value of the specified matrix.
-    ;The following 'MIN' function is peculiar to IDL.
-    ;It is used below to find the minimum value of the specified matrix.
-    ;   xlen = max(X) - min(X)
-    ;   ylen = max(Y) - min(Y)
 
     xlen = forceXlen
     ylen = forceYlen
 
-    ratio = DOUBLE(ylen)/DOUBLE(xlen)
 
     ;The following procedures 'DEVICE', 'LOADCT' and 'WINDOW' are used to set up graphic display options.
     device, retain=2, decomposed =0
@@ -216,7 +128,7 @@ pro driver_an_2022fThresholds_plgn
     ;The PLOT procedure draws graphs of vector arguments.
     ;Below we use 'PLOT' for plotting particle positions.
 
-    plot,X,Y,psym=3, isotropic=1, xrange = [0,forceXlen], yrange = [0,forceYlen],xstyle = 1, ystyle=1,title = 'polygon construction for frame' + string(frameNumber)
+    plot,X,Y,psym=3, isotropic=1, xrange = [plot_xbegin,plot_xend], yrange = [plot_ybegin,plot_yend], xstyle = 1, ystyle=1,title = 'polygon construction for frame' + string(frameNumber)
 
     ;User defined procedure 1: 'sideSelector'
     ;
