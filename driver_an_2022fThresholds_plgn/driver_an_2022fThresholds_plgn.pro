@@ -129,7 +129,6 @@ pro driver_an_2022fThresholds_plgn
     ;Below we use 'PLOT' for plotting particle positions.
 
     plot,X,Y,psym=3, isotropic=1, xrange = [plot_xbegin,plot_xend], yrange = [plot_ybegin,plot_yend], xstyle = 1, ystyle=1,title = 'polygon construction for frame' + string(frameNumber)
-
     ;User defined procedure 1: 'sideSelector'
     ;
     ;This procedure is used below to perform the following tasks.
@@ -392,7 +391,6 @@ end
 ;User defined procedure 1
 
 pro sideSelector,X,Y,allAngles,allSides,numTriangles
-
 
   ;The following 'TRIANGULATE' routine is peculiar to IDL
   ;The TRIANGULATE procedure constructs a Delaunay triangulation of a planar set of points.
@@ -982,7 +980,7 @@ pro TriangleCountandPlot,defectClassification,unt,out
       ;The POLYFILL procedure fills the interior of a region of the display enclosed by an arbitrary two-dimensional polygon.
       ;It is used below to plot and color the identified polygon.
 
-      ;    polyfill, Xcs,Ycs, color=140,linestyle = 0,thick = 0.5 ;color = 140 - green
+      polyfill, Xcs,Ycs, color=140,linestyle = 0,thick = 0.5 ;color = 140 - green
       oplot, Xcs,Ycs
 
     endfor
@@ -1072,7 +1070,7 @@ pro QuadrilateralCountandPlot,defectClassification,unt,out
 
       Xcs = [Polygonswithoutrepeats(0,num),Polygonswithoutrepeats(2,num),Polygonswithoutrepeats(4,num),Polygonswithoutrepeats(6,num),Polygonswithoutrepeats(0,num)]
       Ycs = [Polygonswithoutrepeats(1,num),Polygonswithoutrepeats(3,num),Polygonswithoutrepeats(5,num),Polygonswithoutrepeats(7,num),Polygonswithoutrepeats(1,num)]
-      ;    polyfill, Xcs,Ycs, color=250,linestyle = 0,thick = 0.5 ;color = 250 - red
+      polyfill, Xcs,Ycs, color=250,linestyle = 0,thick = 0.5 ;color = 250 - red
       oplot, Xcs,Ycs
 
     endfor
@@ -1166,7 +1164,7 @@ pro PentagonsCountandPlot,defectClassification,unt,out
 
       Xcs = [Polygonswithoutrepeats(0,num),Polygonswithoutrepeats(2,num),Polygonswithoutrepeats(4,num),Polygonswithoutrepeats(6,num),Polygonswithoutrepeats(8,num),Polygonswithoutrepeats(0,num)]
       Ycs = [Polygonswithoutrepeats(1,num),Polygonswithoutrepeats(3,num),Polygonswithoutrepeats(5,num),Polygonswithoutrepeats(7,num),Polygonswithoutrepeats(9,num),Polygonswithoutrepeats(1,num)]
-      ;    polyfill, Xcs,Ycs, color=200,linestyle = 0,thick = 0.5 ;color = 200 - yellow
+      polyfill, Xcs,Ycs, color=200,linestyle = 0,thick = 0.5 ;color = 200 - yellow
       oplot, Xcs,Ycs
 
     endfor
@@ -1264,7 +1262,7 @@ pro HexagonCountandPlot,defectClassification,unt,out
 
       Xcs = [Polygonswithoutrepeats(0,num),Polygonswithoutrepeats(2,num),Polygonswithoutrepeats(4,num),Polygonswithoutrepeats(6,num),Polygonswithoutrepeats(8,num),Polygonswithoutrepeats(10,num),Polygonswithoutrepeats(0,num)]
       Ycs = [Polygonswithoutrepeats(1,num),Polygonswithoutrepeats(3,num),Polygonswithoutrepeats(5,num),Polygonswithoutrepeats(7,num),Polygonswithoutrepeats(9,num),Polygonswithoutrepeats(11,num),Polygonswithoutrepeats(1,num)]
-      ;    polyfill, Xcs,Ycs, color=215,linestyle = 0,thick = 0.5 ;color = 215 - orange
+      polyfill, Xcs,Ycs, color=215,linestyle = 0,thick = 0.5 ;color = 215 - orange
       oplot, Xcs,Ycs
 
     endfor
