@@ -5,7 +5,7 @@ pro driver_an_2022fThresholds_plgn
   curDate='20220606'
   print, curDate
   print, datapath
-  coreName = STRCOMPRESS('voronoiMap_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
+  coreName = STRCOMPRESS('pgnConstr_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
   ;ROI
   leftBorder = 600.0d
   rightBorder= 1000.0d;
@@ -73,14 +73,12 @@ pro driver_an_2022fThresholds_plgn
   ;INPUT5
   angleThreshold = 75.0
 
-  ;INPUT6
-  image_file = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220606forP_2022fThresholds_plgn\02_code_an_2022fThresholds_plgn\outputs\'
 
   ;INPUT7
-  fname_defect_stat = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220606forP_2022fThresholds_plgn\02_code_an_2022fThresholds_plgn\outputs\Defect_stat.txt'
+  fname_defect_stat = datapath+'\outputs\Defect_stat.txt'
 
   ;INPUT8
-  fname_vertex_stat = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220606forP_2022fThresholds_plgn\02_code_an_2022fThresholds_plgn\outputs\Vertex_stat.txt'
+  fname_vertex_stat = datapath+'\outputs\Vertex_stat.txt'
 
 
   close,3 ;File unit 3 will be assigned to 'fname_defect_stat'
@@ -378,9 +376,9 @@ pro driver_an_2022fThresholds_plgn
     image24[2,*,*] = b[scaled]
     image24 = TVRD(True=1)
     image24 = Reverse(image24, 3)
-    file = image_file+string(frameNumber)+'.polygon_construction'+string(frameNumber)+'.tif'
+    fname = STRCOMPRESS(coreName+string(frameNumber,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
 
-    Write_Tiff, file, image24, 1
+    Write_Tiff, fname, image24, 1
 
     ;User defined procedure 10: 'VertexClassification'
     ;
