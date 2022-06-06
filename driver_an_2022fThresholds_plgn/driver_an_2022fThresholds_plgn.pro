@@ -1,6 +1,14 @@
 pro driver_an_2022fThresholds_plgn
 
-  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220606forP_2022fThresholds_plgn\02_code_an_2022fThresholds_plgn\'
+  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid57\20220606forP_2022fThresholds_plgn\'
+  
+  ;start and end frames
+  iBegin = 1
+  iEnd =  660
+  
+  ;start and end frames for pulse postition fitting:
+  iBegin_ppulse = 522
+  iEnd_ppulse = 624
 
   curDate='20220606'
   print, curDate
@@ -12,9 +20,7 @@ pro driver_an_2022fThresholds_plgn
   yMin = 0.0d;
   yMax = 1000.0d
 
-  ;start and end frames
-  iBegin = 1
-  iEnd =  660
+
 
   forceXlen = 1100
   forceYlen = 1200
@@ -27,9 +33,7 @@ pro driver_an_2022fThresholds_plgn
   screenWidth = forceXlen
   ratio = DOUBLE(plot_yend - plot_ybegin)/DOUBLE(plot_xend - plot_xbegin)
 
-  ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 513
-  iEnd_ppulse = 614
+
 
 
   CD, datapath
