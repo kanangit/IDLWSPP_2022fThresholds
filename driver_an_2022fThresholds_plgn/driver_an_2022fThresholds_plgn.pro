@@ -1,16 +1,16 @@
 pro driver_an_2022fThresholds_plgn
 
-  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid59\20220606forP_2022fThresholds_plgn\02_code_an_2022fThresholds_plgn\'
+  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid60\20220607forP_2022fThresholds_plgn\02_code_an_2022fThresholds_plgn\'
   
   ;start and end frames
   iBegin = 1
-  iEnd =  880
+  iEnd =  1056
   
   ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 661
-  iEnd_ppulse = 777
+  iBegin_ppulse = 784
+  iEnd_ppulse = 935
 
-  curDate='20220606'
+  curDate='20220607'
   print, curDate
   print, datapath
   coreName = STRCOMPRESS('pgnConstr_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
@@ -146,7 +146,9 @@ pro driver_an_2022fThresholds_plgn
     ;The PLOT procedure draws graphs of vector arguments.
     ;Below we use 'PLOT' for plotting particle positions.
 
-    plot,X,Y,psym=3, isotropic=1, xrange = [plot_xbegin,plot_xend], yrange = [plot_ybegin,plot_yend], xstyle = 1, ystyle=1,title = 'polygon construction for frame' + string(frameNumber)
+    plot,X,Y,psym=3, isotropic=1, xrange = [plot_xbegin,plot_xend], yrange = [plot_ybegin,plot_yend], $
+      xstyle = 1, ystyle=1, charsize = 2.0, thick = 8.0, charthick = 2, /NODATA, $
+      title = 'polygon construction for frame' + string(frameNumber)
     ;User defined procedure 1: 'sideSelector'
     ;
     ;This procedure is used below to perform the following tasks.
