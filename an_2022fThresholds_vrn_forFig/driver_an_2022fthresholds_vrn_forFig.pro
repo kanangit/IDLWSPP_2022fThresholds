@@ -4,7 +4,7 @@
 PRO driver_an_2022fThresholds_vrn_forFig
   ;
 
-  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid57\20220602forP_2022fThresholds\01_code_an_2022fThresholds_vrn\'
+  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220608forP_2022fThresholds_fig\03_code_an_2022fThresholds_vrn_forFig\'
 
   curDate='20220608'
   print, curDate
@@ -16,9 +16,8 @@ PRO driver_an_2022fThresholds_vrn_forFig
   yMin = 0.0d;
   yMax = 1000.0d
 
-  ;start and end frames
-  iBegin = 1
-  iEnd =  660
+  ;frame of interest
+  myFrame = 7
 
 
   ;start and end frames for pulse postition fitting:
@@ -59,13 +58,13 @@ PRO driver_an_2022fThresholds_vrn_forFig
   s_ROI.X = y_temp
 
 
-  myFrame = 1;
 
-  FOR myFrame = iBegin, iEnd DO BEGIN
-    fname = STRCOMPRESS(coreName+string(myFrame,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
+
+
+    fnam = STRCOMPRESS(coreName+string(myFrame,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
     indMyFrame = WHERE(s_ROI.iFrame eq myFrame)
     pulsePos = coeffs[0] + myFrame * coeffs[1]
-    dratio = oldplot_defects(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], pulsePos, fname)
+    dratio = oldplot_defects_postScript(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], pulsePos, fnam)
 
-  ENDFOR
+
 END
