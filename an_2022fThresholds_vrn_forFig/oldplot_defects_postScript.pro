@@ -182,9 +182,10 @@ Write_Tiff, filename_tif, image24, 1;, XRESOL = 300, YRESOL = 300
 
 originalDevice = !d.name
 set_plot, 'ps'
-device, filename='filename_eps'
+device, filename=filename_eps
 ;device, xsize=4, ysize=3, /inches
 device, color=1, bits_per_pixel=24
+device, /encapsulated
 
 
 
@@ -294,9 +295,9 @@ postshock_num_total = postshock_num_hexagons + postshock_num_defects
 postshock_defect_ratio = DOUBLE(postshock_num_defects) / DOUBLE(postshock_num_total)
 
 ;XYOUTS, postshock_right_border - 270, 525, STRCOMPRESS('postshock defect ratio = ' + STRING(postshock_defect_ratio, format = '(D4.2)')), $
-  COLOR = 47
+;  COLOR = 47
 ;XYOUTS, preshock_left_border + 5, textHeight, STRCOMPRESS('preshock defect ratio = ' + STRING(preshock_defect_ratio, format = '(D4.2)')), $
-  COLOR = 254
+;  COLOR = 254
 
 ;plotting the shock front position:
 plots, shockfront_x, shockFront_y, THICK = 3
