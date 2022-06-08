@@ -61,7 +61,7 @@ PRO driver_an_2022fThresholds_vrn_forFig
 
 
 
-    fnam = STRCOMPRESS(coreName+string(myFrame,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
+    fnam = STRCOMPRESS(coreName+string(myFrame,FORMAT='(I04)'), /REMOVE_ALL)
     indMyFrame = WHERE(s_ROI.iFrame eq myFrame)
     pulsePos = coeffs[0] + myFrame * coeffs[1]
     dratio = oldplot_defects_postScript(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], pulsePos, fnam)
