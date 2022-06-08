@@ -1,7 +1,7 @@
 ;v 1.0
 ;2022-05-27
 FUNCTION oldplot_defects_postScript, XmyFrame, YmyFrame, shockPos, filename
-
+  set_plot, 'WIN'
   DEVICE, GET_DECOMPOSED=old_decomposed
   device, retain=2, decomposed =0
   loadct, 39
@@ -11,7 +11,7 @@ FUNCTION oldplot_defects_postScript, XmyFrame, YmyFrame, shockPos, filename
   plot_ybegin = 600;
   plot_yend = 1000;
   plot_xbegin = 0
-  plot_xend = 1100
+  plot_xend = 1000
 
   preshock_offset = 50.0
   postshock_offset = 50.0
@@ -29,9 +29,7 @@ FUNCTION oldplot_defects_postScript, XmyFrame, YmyFrame, shockPos, filename
   preshock_left_x = [preshock_left_border, preshock_left_border]
   preshock_left_y = [textHeight, plot_yend]
 
-  forceXlen = 1100
-  forceYlen = 1200
-  screenWidth = forceXlen
+  screenWidth = 1600
   ratio = DOUBLE(plot_yend - plot_ybegin)/DOUBLE(plot_xend - plot_xbegin)
 
   window, 2, xsize = screenWidth, ysize =screenWidth*ratio
@@ -49,7 +47,6 @@ FUNCTION oldplot_defects_postScript, XmyFrame, YmyFrame, shockPos, filename
 
 
   ;  stop
-  ;plot,XmyFrame,YmyFrame,psym=3, isotropic=1, xrange = [0,forceXlen], yrange = [0,forceYlen],xstyle = 1, ystyle=1,title = 'Voronoi map for unperturbed liquid'
   plot,XmyFrame,YmyFrame,psym=3, isotropic=1, xrange = [plot_xbegin,plot_xend], yrange = [plot_ybegin,plot_yend],xstyle = 1, $
     ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0, charthick = 2, $
     /NODATA
@@ -143,15 +140,15 @@ postshock_num_defects = postshock_num_othergons + postshock_num_pentagons + post
 postshock_num_total = postshock_num_hexagons + postshock_num_defects
 postshock_defect_ratio = DOUBLE(postshock_num_defects) / DOUBLE(postshock_num_total)
 
-XYOUTS, postshock_right_border - 270, 525, STRCOMPRESS('postshock defect ratio = ' + STRING(postshock_defect_ratio, format = '(D4.2)')), $
+;XYOUTS, postshock_right_border - 270, 525, STRCOMPRESS('postshock defect ratio = ' + STRING(postshock_defect_ratio, format = '(D4.2)')), $
   COLOR = 47
-XYOUTS, preshock_left_border + 5, textHeight, STRCOMPRESS('preshock defect ratio = ' + STRING(preshock_defect_ratio, format = '(D4.2)')), $
+;XYOUTS, preshock_left_border + 5, textHeight, STRCOMPRESS('preshock defect ratio = ' + STRING(preshock_defect_ratio, format = '(D4.2)')), $
   COLOR = 254
 
 ;plotting the shock front position:
-plots, shockfront_x, shockFront_y, THICK = 3
-plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
-plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
+;plots, shockfront_x, shockFront_y, THICK = 3
+;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
+;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 ; Reset device paramters
 
 ;save the file as tiff:
@@ -166,23 +163,22 @@ image24[2,*,*] = b[scaled]
 image24 = TVRD(True=1)
 image24 = Reverse(image24, 3)
 
-filename_eps = STRCOMPRESS(filename+'eps', /REMOVE_ALL)
-filename_tif = STRCOMPRESS(filename+'tif', /REMOVE_ALL)
+filename_eps = STRCOMPRESS(filename+'.eps', /REMOVE_ALL)
+filename_tif = STRCOMPRESS(filename+'.tif', /REMOVE_ALL)
 Write_Tiff, filename_tif, image24, 1;, XRESOL = 300, YRESOL = 300
 
 
 
-;DEVICE, DECOMPOSED=old_decomposed
+stop
 
 
 originalDevice = !d.name
 set_plot, 'ps'
 device, filename=filename_eps
 ;device, xsize=4, ysize=3, /inches
+device, FONT_SIZE = 12
 device, color=1, bits_per_pixel=24
 device, /encapsulated
-
-
 
 ; Triangulate it:
 TRIANGULATE, XmyFrame, YmyFrame, tr, CONN=C
@@ -296,12 +292,14 @@ postshock_defect_ratio = DOUBLE(postshock_num_defects) / DOUBLE(postshock_num_to
 
 ;plotting the shock front position:
 plots, shockfront_x, shockFront_y, THICK = 3
-plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
-plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
+;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
+;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 ; Reset device paramters
 
 device, /close_file
 set_plot, originalDevice
+
+DEVICE, DECOMPOSED=old_decomposed
 
 return, defect_ratio
 END
