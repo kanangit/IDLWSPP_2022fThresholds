@@ -9,9 +9,9 @@
 <itemSize x="30"/>
 </perspectiveBar>
 <coolbarLayout>
-<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="225" y="54"/>
-<coolItem id="com.rsi.idldt.ui.textedit.toolbar" itemType="typeToolBarContribution" x="304" y="54"/>
-<coolItem id="com.rsi.idldt.ui.toolbar.debugTools" itemType="typeToolBarContribution" x="455" y="54"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="221" y="38"/>
+<coolItem id="com.rsi.idldt.ui.textedit.toolbar" itemType="typeToolBarContribution" x="291" y="38"/>
+<coolItem id="com.rsi.idldt.ui.toolbar.debugTools" itemType="typeToolBarContribution" x="417" y="38"/>
 </coolbarLayout>
 <page aggregateWorkingSetId="Aggregate for window 1653512548967" focus="true" label="Workspace - IDL">
 <editors>
@@ -23,13 +23,14 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="com.rsi.idldt.proeditor.ProEditor" name="driver_an_2022fThresholds_vrn.pro" partName="driver_an_2022fThresholds_vrn.pro" path="D:/kananovich/work/workIA/research/IDLWsps/IDLtask/IDLWSPP_2022fThresholds/an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro" title="driver_an_2022fThresholds_vrn.pro" tooltip="an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro" workbook="DefaultEditorWorkbook">
+<editor id="com.rsi.idldt.proeditor.ProEditor" name="driver_an_2022fThresholds_vrn.pro" partName="driver_an_2022fThresholds_vrn.pro" path="D:/kananovich/work/workIA/research/IDLWsps/IDLtask/IDLWSPP_2022fThresholds/an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro" title="driver_an_2022fThresholds_vrn.pro" tooltip="an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="544" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="80" selectionOffset="1701" selectionTopPixel="374"/>
 </editor>
 <editor id="com.rsi.idldt.proeditor.ProEditor" name="s_select.pro" partName="s_select.pro" path="D:/kananovich/work/workIA/research/IDLWsps/IDLtask/IDLWSPP_2022fThresholds/an_2022fThresholds_vrn/s_select.pro" title="s_select.pro" tooltip="an_2022fThresholds_vrn/s_select.pro" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/an_2022fThresholds_vrn/s_select.pro"/>
@@ -37,11 +38,15 @@
 </editor>
 <editor id="com.rsi.idldt.proeditor.ProEditor" name="oldplot_defects.pro" partName="oldplot_defects.pro" path="D:/kananovich/work/workIA/research/IDLWsps/IDLtask/IDLWSPP_2022fThresholds/an_2022fThresholds_vrn/oldplot_defects.pro" title="oldplot_defects.pro" tooltip="an_2022fThresholds_vrn/oldplot_defects.pro" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/an_2022fThresholds_vrn/oldplot_defects.pro"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1156" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="7" selectionOffset="1652" selectionTopPixel="612"/>
 </editor>
 <editor id="com.rsi.idldt.proeditor.ProEditor" name="read_pulse_pos.pro" partName="read_pulse_pos.pro" path="D:/kananovich/work/workIA/research/IDLWsps/IDLtask/IDLWSPP_2022fThresholds/an_2022fThresholds_vrn/read_pulse_pos.pro" title="read_pulse_pos.pro" tooltip="an_2022fThresholds_vrn/read_pulse_pos.pro" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/an_2022fThresholds_vrn/read_pulse_pos.pro"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="146" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="com.rsi.idldt.proeditor.ProEditor" name="driver_an_2022fThresholds_plgn.pro" partName="driver_an_2022fThresholds_plgn.pro" title="driver_an_2022fThresholds_plgn.pro" tooltip="D:\kananovich\work\workIA\research\IDLWsps\IDLtask\IDLWSPP_2022fThresholds\driver_an_2022fThresholds_plgn\driver_an_2022fThresholds_plgn.pro" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/D:/kananovich/work/workIA/research/IDLWsps/IDLtask/IDLWSPP_2022fThresholds/driver_an_2022fThresholds_plgn/driver_an_2022fThresholds_plgn.pro"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="15961" selectionTopPixel="7089"/>
 </editor>
 </editors>
 <views>
@@ -132,7 +137,7 @@
 <layout>
 <mainWindow>
 <info folder="true" part="left">
-<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
 <page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
@@ -237,162 +242,159 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" path="/an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" uri="file:/D:/kananovich/work/workIA/research/IDLWsps/IDLtask/IDLWSPP_2022fThresholds/an_2022fThresholds_vrn/oldplot_defects.pro"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" uri="file:/D:/kananovich/work/workIA/research/IDLWsps/IDLtask/IDLWSPP_2022fThresholds/an_2022fThresholds_vrn/s_select.pro"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" path="/an_2022fThresholds_vrn/s_select.pro"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" uri="file:/D:/kananovich/work/workIA/research/IDLWsps/IDLtask/IDLWSPP_2022fThresholds/driver_an_2022fThresholds_plgn/driver_an_2022fThresholds_plgn.pro"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" path="/an_2022fThresholds_vrn/oldplot_defects.pro"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" path="/an_2022fThresholds_vrn/read_pulse_pos.pro"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" path="/an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro"/>
 </editors>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="838" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="12974" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="38647" y="19"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="12974" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="14502" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="2">
+<position info="not_deleted" x="1836" y="42"/>
 </item>
 <item historyLabel="oldplot_defects.pro" index="1">
-<position info="not_deleted" x="5289" y="0"/>
+<position info="not_deleted" x="607" y="79"/>
 </item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="838" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="2">
+<position info="not_deleted" x="1701" y="80"/>
 </item>
-<item historyLabel="s_select.pro" index="2">
-<position info="not_deleted" x="36" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="2116" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="2431" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="2059" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="598" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="2">
+<position info="not_deleted" x="1701" y="80"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="596" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="2">
+<position info="not_deleted" x="1701" y="80"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="596" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="14223" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="14155" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="14098" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="28034" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="14139" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="32206" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="20938" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="362" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="364" y="0"/>
+</item>
+<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="2">
+<position info="not_deleted" x="1701" y="80"/>
 </item>
 <item historyLabel="oldplot_defects.pro" index="1">
-<position info="not_deleted" x="5243" y="0"/>
+<position info="not_deleted" x="280" y="0"/>
 </item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="838" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="364" y="0"/>
 </item>
-<item historyLabel="oldplot_defects.pro" index="1">
-<position info="not_deleted" x="5127" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="404" y="0"/>
 </item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="838" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="385" y="0"/>
 </item>
-<item historyLabel="oldplot_defects.pro" index="1">
-<position info="not_deleted" x="5399" y="0"/>
-</item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="838" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="2">
+<position info="not_deleted" x="1701" y="80"/>
 </item>
 <item historyLabel="oldplot_defects.pro" index="1">
-<position info="not_deleted" x="5127" y="0"/>
+<position info="not_deleted" x="280" y="0"/>
 </item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="838" y="0"/>
-</item>
-<item historyLabel="oldplot_defects.pro" index="1">
-<position info="not_deleted" x="2926" y="0"/>
-</item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="838" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="385" y="0"/>
 </item>
 <item historyLabel="oldplot_defects.pro" index="1">
-<position info="not_deleted" x="5127" y="0"/>
+<position info="not_deleted" x="280" y="0"/>
 </item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="838" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="385" y="0"/>
 </item>
-<item historyLabel="s_select.pro" index="3">
-<position info="not_deleted" x="36" y="0"/>
+<item historyLabel="oldplot_defects.pro" index="1">
+<position info="not_deleted" x="280" y="0"/>
 </item>
-<item historyLabel="oldplot_defects.pro" index="4">
-<position info="not_deleted" x="5128" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="4458" y="0"/>
 </item>
-<item historyLabel="read_pulse_pos.pro" index="5">
-<position info="not_deleted" x="146" y="0"/>
+<item historyLabel="oldplot_defects.pro" index="1">
+<position info="not_deleted" x="1601" y="43"/>
 </item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="467" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="4458" y="0"/>
 </item>
-<item historyLabel="oldplot_defects.pro" index="4">
-<position info="not_deleted" x="166" y="0"/>
+<item historyLabel="oldplot_defects.pro" index="1">
+<position info="not_deleted" x="1652" y="7"/>
 </item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="252" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="4458" y="0"/>
 </item>
-<item historyLabel="s_select.pro" index="3">
-<position info="not_deleted" x="36" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="362" y="0"/>
 </item>
-<item historyLabel="oldplot_defects.pro" index="4">
-<position info="not_deleted" x="166" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="15961" y="0"/>
 </item>
-<item historyLabel="read_pulse_pos.pro" index="5">
-<position info="not_deleted" x="146" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="362" y="0"/>
 </item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="252" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="42876" y="0"/>
 </item>
-<item historyLabel="oldplot_defects.pro" index="4">
-<position info="not_deleted" x="1156" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="362" y="0"/>
 </item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="252" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="15961" y="0"/>
 </item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="249" y="0"/>
+<item historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="199" y="0"/>
 </item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="524" y="0"/>
-</item>
-<item historyLabel="oldplot_defects.pro" index="4">
-<position info="not_deleted" x="348" y="0"/>
-</item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="522" y="0"/>
-</item>
-<item historyLabel="oldplot_defects.pro" index="4">
-<position info="not_deleted" x="1156" y="0"/>
-</item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="647" y="0"/>
-</item>
-<item historyLabel="oldplot_defects.pro" index="4">
-<position info="not_deleted" x="1156" y="0"/>
-</item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="647" y="0"/>
-</item>
-<item historyLabel="oldplot_defects.pro" index="4">
-<position info="not_deleted" x="1156" y="0"/>
-</item>
-<item historyLabel="s_select.pro" index="3">
-<position info="not_deleted" x="36" y="0"/>
-</item>
-<item historyLabel="read_pulse_pos.pro" index="5">
-<position info="not_deleted" x="146" y="0"/>
-</item>
-<item historyLabel="oldplot_defects.pro" index="4">
-<position info="not_deleted" x="3964" y="20"/>
-</item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="974" y="0"/>
-</item>
-<item historyLabel="s_select.pro" index="3">
-<position info="not_deleted" x="36" y="0"/>
-</item>
-<item historyLabel="oldplot_defects.pro" index="4">
-<position info="not_deleted" x="3964" y="20"/>
-</item>
-<item historyLabel="read_pulse_pos.pro" index="5">
-<position info="not_deleted" x="146" y="0"/>
-</item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="49" y="0"/>
-</item>
-<item historyLabel="oldplot_defects.pro" index="4">
-<position info="not_deleted" x="1156" y="0"/>
-</item>
-<item historyLabel="s_select.pro" index="3">
-<position info="not_deleted" x="36" y="0"/>
-</item>
-<item historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="49" y="0"/>
-</item>
-<item historyLabel="oldplot_defects.pro" index="4">
-<position info="not_deleted" x="1156" y="0"/>
-</item>
-<item active="true" historyLabel="driver_an_2022fThresholds_vrn.pro" index="0">
-<position info="not_deleted" x="49" y="0"/>
+<item active="true" historyLabel="driver_an_2022fThresholds_plgn.pro" index="0">
+<position info="not_deleted" x="15961" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -411,6 +413,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" name="readImageJK.pro" tooltip="anReadImageJK/readImageJK.pro">
+<persistable path="/anReadImageJK/readImageJK.pro"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.rsi.idldt.proeditor.ProEditor" name="driver_an_2022fThresholds_vrn.pro" tooltip="an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro">
 <persistable path="/an_2022fThresholds_vrn/driver_an_2022fThresholds_vrn.pro"/>
 </file>
