@@ -8,11 +8,6 @@ FUNCTION oldplot_defects_postScript, XmyFrame, YmyFrame, shockPos, filename
   !p.color = 0
   !p.background = 255
 
-  forceXlen = 1100
-  forceYlen = 1200
-  screenWidth = 1200
-  ratio = DOUBLE(forceYlen)/DOUBLE(forceXlen)
-
   plot_ybegin = 600;
   plot_yend = 1000;
   plot_xbegin = 0
