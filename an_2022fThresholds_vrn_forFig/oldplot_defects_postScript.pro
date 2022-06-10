@@ -177,7 +177,7 @@ image24 = Reverse(image24, 3)
 
 filename_eps = STRCOMPRESS(filename+'.eps', /REMOVE_ALL)
 filename_tif = STRCOMPRESS(filename+'.tif', /REMOVE_ALL)
-filename_wmf = STRCOMPRESS(filename+'.wmf', /REMOVE_ALL)
+filename_emf = STRCOMPRESS(filename+'.emf', /REMOVE_ALL)
 Write_Tiff, filename_tif, image24, 1;, XRESOL = 300, YRESOL = 300
 
 
@@ -317,9 +317,14 @@ set_plot, originalDevice
 ;--------------------------------------------------------------------------------------------------------------------------------------
 originalDevice = !d.name
 set_plot, 'METAFILE'
-device, filename = filename_wmf
+device, filename = filename_emf
 device, TRUE_COLOR = 1
-;device, xsize=4, ysize=3, /inches
+
+
+loadct, 39
+!p.color = 0
+!p.background = 255
+device, xsize= (3 + 3/8) * 2, ysize= ratio * ((8 + 3/8) * 2), /inches
 ;device, FONT_SIZE = 12
 ;device, color=1, bits_per_pixel=24
 ;device, /encapsulated
@@ -339,7 +344,7 @@ N = N_ELEMENTS(XmyFrame);
 plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, $
     xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
     xstyle = 1, $
-    ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0, charthick = 2, $
+    ystyle=1,title = 'Voronoi map', charsize = 1.0, thick = 8.0, charthick = 2, $
     /NODATA
 
 
