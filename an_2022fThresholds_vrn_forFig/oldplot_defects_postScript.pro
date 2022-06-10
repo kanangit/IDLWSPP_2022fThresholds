@@ -15,21 +15,21 @@ cam_resol = 0.0254303 ;mm/px
   plot_xbegin = 0
   plot_xend = 1000
 
-;  preshock_offset = 50.0
-;  postshock_offset = 50.0
+  preshock_offset = 50.0
+  postshock_offset = 50.0
 
-;  textHeight = 525
+  textHeight = 525
 
-;  postshock_right_border = shockPos - preshock_offset
- ; preshock_left_border = shockPos + postshock_offset
+  postshock_right_border = shockPos - preshock_offset
+  preshock_left_border = shockPos + postshock_offset
 
   shockfront_x = [shockPos, shockPos]
   shockFront_y = [textHeight, plot_yend]
 
-;  postshock_right_x = [postshock_right_border, postshock_right_border]
-;  postshock_right_y = [textHeight, plot_yend]
-;  preshock_left_x = [preshock_left_border, preshock_left_border]
-;  preshock_left_y = [textHeight, plot_yend]
+  postshock_right_x = [postshock_right_border, postshock_right_border]
+  postshock_right_y = [textHeight, plot_yend]
+  preshock_left_x = [preshock_left_border, preshock_left_border]
+  preshock_left_y = [textHeight, plot_yend]
 
   screenWidth = 1600
   ratio = DOUBLE(plot_yend - plot_ybegin)/DOUBLE(plot_xend - plot_xbegin)

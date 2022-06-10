@@ -4,7 +4,7 @@
 PRO driver_an_2022fThresholds_vrn_forFig
   ;
 
-  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220608forP_2022fThresholds_fig\03_code_an_2022fThresholds_vrn_forFig\'
+  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220610forP_2022fThresholds_fig\03_code_an_2022fThresholds_vrn_forFig\'
 
   curDate='20220608'
   print, curDate
