@@ -7,34 +7,39 @@ FUNCTION oldplot_defects_postScript, XmyFrame, YmyFrame, shockPos, filename
   loadct, 39
   !p.color = 0
   !p.background = 255
-
+  
+  
+cam_resol = 0.0254303 ;mm/px
   plot_ybegin = 600;
   plot_yend = 1000;
   plot_xbegin = 0
   plot_xend = 1000
 
-  preshock_offset = 50.0
-  postshock_offset = 50.0
+;  preshock_offset = 50.0
+;  postshock_offset = 50.0
 
-  textHeight = 525
+;  textHeight = 525
 
-  postshock_right_border = shockPos - preshock_offset
-  preshock_left_border = shockPos + postshock_offset
+;  postshock_right_border = shockPos - preshock_offset
+ ; preshock_left_border = shockPos + postshock_offset
 
   shockfront_x = [shockPos, shockPos]
   shockFront_y = [textHeight, plot_yend]
 
-  postshock_right_x = [postshock_right_border, postshock_right_border]
-  postshock_right_y = [textHeight, plot_yend]
-  preshock_left_x = [preshock_left_border, preshock_left_border]
-  preshock_left_y = [textHeight, plot_yend]
+;  postshock_right_x = [postshock_right_border, postshock_right_border]
+;  postshock_right_y = [textHeight, plot_yend]
+;  preshock_left_x = [preshock_left_border, preshock_left_border]
+;  preshock_left_y = [textHeight, plot_yend]
 
   screenWidth = 1600
   ratio = DOUBLE(plot_yend - plot_ybegin)/DOUBLE(plot_xend - plot_xbegin)
 
   window, 2, xsize = screenWidth, ysize =screenWidth*ratio
 
+;convert px to mm, shift the origin to zero:
 
+XmyFrame_mm =  (DOUBLE(XmyFrame) - DOUBLE(plot_xbegin)) * DOUBLE(cam_resol)
+YmyFrame_mm = (DOUBLE(YmyFrame) - DOUBLE(plot_xbegin)) * DOUBLE(cam_resol)
 
   ; Triangulate it:
   TRIANGULATE, XmyFrame, YmyFrame, tr, CONN=C
