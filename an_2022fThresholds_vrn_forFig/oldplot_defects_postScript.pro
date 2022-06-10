@@ -208,7 +208,7 @@ N = N_ELEMENTS(XmyFrame);
 plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, $
     xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
     xstyle = 1, $
-    ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0, charthick = 2, $
+    ystyle=1,title = 'Voronoi map', charsize = 1.0, thick = 8.0, charthick = 2, $
     /NODATA
 
 
@@ -318,6 +318,7 @@ set_plot, originalDevice
 originalDevice = !d.name
 set_plot, 'METAFILE'
 device, filename = filename_wmf
+device, TRUE_COLOR = 1
 ;device, xsize=4, ysize=3, /inches
 ;device, FONT_SIZE = 12
 ;device, color=1, bits_per_pixel=24
