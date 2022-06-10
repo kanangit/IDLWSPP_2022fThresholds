@@ -205,9 +205,11 @@ N = N_ELEMENTS(XmyFrame);
 
 ;  stop
 ;plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, xrange = [0,forceXlen], yrange = [0,forceYlen],xstyle = 1, ystyle=1,title = 'Voronoi map for unperturbed liquid'
-plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, xrange = [plot_xbegin,plot_xend], yrange = [plot_ybegin,plot_yend],xstyle = 1, $
-  ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0, charthick = 2, $
-  /NODATA
+plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, $
+    xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
+    xstyle = 1, $
+    ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0, charthick = 2, $
+    /NODATA
 
 
 voronXLeftMargin = min(XmyFrame_mm)
@@ -304,7 +306,7 @@ postshock_defect_ratio = DOUBLE(postshock_num_defects) / DOUBLE(postshock_num_to
 ;  COLOR = 254
 
 ;plotting the shock front position:
-plots, shockfront_x, shockFront_y, THICK = 3
+;plots, shockfront_x, shockFront_y, THICK = 3
 ;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
 ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 ; Reset device paramters
@@ -333,9 +335,11 @@ N = N_ELEMENTS(XmyFrame);
 
 ;  stop
 ;plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, xrange = [0,forceXlen], yrange = [0,forceYlen],xstyle = 1, ystyle=1,title = 'Voronoi map for unperturbed liquid'
-plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, xrange = [plot_xbegin,plot_xend], yrange = [plot_ybegin,plot_yend],xstyle = 1, $
-  ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0, charthick = 2, $
-  /NODATA
+plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, $
+    xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
+    xstyle = 1, $
+    ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0, charthick = 2, $
+    /NODATA
 
 
 voronXLeftMargin = min(XmyFrame_mm)
@@ -432,7 +436,7 @@ postshock_defect_ratio = DOUBLE(postshock_num_defects) / DOUBLE(postshock_num_to
 ;  COLOR = 254
 
 ;plotting the shock front position:
-plots, shockfront_x, shockFront_y, THICK = 3
+;plots, shockfront_x, shockFront_y, THICK = 3
 ;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
 ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 ; Reset device paramters
