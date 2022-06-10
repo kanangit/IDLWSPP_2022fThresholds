@@ -38,29 +38,36 @@ cam_resol = 0.0254303 ;mm/px
 
 ;convert px to mm, shift the origin to zero:
 
-XmyFrame_mm =  (DOUBLE(XmyFrame) - DOUBLE(plot_xbegin)) * DOUBLE(cam_resol)
-YmyFrame_mm = (DOUBLE(YmyFrame) - DOUBLE(plot_xbegin)) * DOUBLE(cam_resol)
+XmyFrame_mm =  px_to_mm(XmyFrame, plot_xbegin, cam_resol)
+YmyFrame_mm =  px_to_mm(YmyFrame, plot_xbegin, cam_resol)
+plot_xbegin_mm = px_to_mm(plot_xbegin, plot_xbegin, cam_resol)
+plot_xend_mm = px_to_mm(plot_xend, plot_xbegin, cam_resol)
+plot_ybegin_mm = px_to_mm(plot_ybegin, plot_xbegin, cam_resol)
+plot_yend_mm = px_to_mm(plot_yend, plot_xbegin, cam_resol)
+
 
   ; Triangulate it:
-  TRIANGULATE, XmyFrame, YmyFrame, tr, CONN=C
+  TRIANGULATE, XmyFrame_mm, YmyFrame_mm, tr, CONN=C
   ;  stop
 
   N = N_ELEMENTS(XmyFrame);
-  ;N = 1400
+
 
 
 
 
   ;  stop
-  plot,XmyFrame,YmyFrame,psym=3, isotropic=1, xrange = [plot_xbegin,plot_xend], yrange = [plot_ybegin,plot_yend],xstyle = 1, $
+  plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, $
+    xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
+    xstyle = 1, $
     ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0, charthick = 2, $
     /NODATA
 
 
-  voronXLeftMargin = min(XmyFrame)
-  voronXRightMargin = max(XmyFrame)
-  voronYLeftMargin = min(YmyFrame)
-  voronYRightMargin = max(YmyFrame)
+  voronXLeftMargin = min(XmyFrame_mm)
+  voronXRightMargin = max(XmyFrame_mm)
+  voronYLeftMargin = min(YmyFrame_mm)
+  voronYRightMargin = max(YmyFrame_mm)
   num_hexagons = LONG(0)
   num_pentagons = LONG(0)
   num_heptagons = LONG(0)
@@ -75,7 +82,7 @@ YmyFrame_mm = (DOUBLE(YmyFrame) - DOUBLE(plot_xbegin)) * DOUBLE(cam_resol)
   postshock_num_othergons = LONG(0)
   FOR I=0, N-1 DO BEGIN & $
     ; Get the ith polygon:
-    VORONOI, XmyFrame, YmyFrame, I, C, Xp, Yp & $
+    VORONOI, XmyFrame_mm, YmyFrame_mm, I, C, Xp, Yp & $
     ; Draw it:
     if (MAX(XP) LE voronXRightMargin AND MAX(YP) LE voronYRightMargin AND MIN(XP) GE voronXLeftMargin AND MIN(YP) GE voronYLeftMargin) then begin
     ;      POLYFILL, Xp, Yp, COLOR = 17 - LONG(DOUBLE((N_ELEMENTS(Xp)) - 10.0d/3.0d) * 3) & $
@@ -131,7 +138,7 @@ YmyFrame_mm = (DOUBLE(YmyFrame) - DOUBLE(plot_xbegin)) * DOUBLE(cam_resol)
 
 endfor
 
-oplot,XmyFrame,YmyFrame,psym=3
+oplot,XmyFrame_mm,YmyFrame_mm,psym=3
 
 num_defects = num_othergons + num_pentagons + num_pentagons
 num_total = num_hexagons + num_defects
@@ -187,7 +194,7 @@ device, color=1, bits_per_pixel=24
 device, /encapsulated
 
 ; Triangulate it:
-TRIANGULATE, XmyFrame, YmyFrame, tr, CONN=C
+TRIANGULATE, XmyFrame_mm, YmyFrame_mm, tr, CONN=C
 ;  stop
 
 N = N_ELEMENTS(XmyFrame);
@@ -197,16 +204,16 @@ N = N_ELEMENTS(XmyFrame);
 
 
 ;  stop
-;plot,XmyFrame,YmyFrame,psym=3, isotropic=1, xrange = [0,forceXlen], yrange = [0,forceYlen],xstyle = 1, ystyle=1,title = 'Voronoi map for unperturbed liquid'
-plot,XmyFrame,YmyFrame,psym=3, isotropic=1, xrange = [plot_xbegin,plot_xend], yrange = [plot_ybegin,plot_yend],xstyle = 1, $
+;plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, xrange = [0,forceXlen], yrange = [0,forceYlen],xstyle = 1, ystyle=1,title = 'Voronoi map for unperturbed liquid'
+plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, xrange = [plot_xbegin,plot_xend], yrange = [plot_ybegin,plot_yend],xstyle = 1, $
   ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0, charthick = 2, $
   /NODATA
 
 
-voronXLeftMargin = min(XmyFrame)
-voronXRightMargin = max(XmyFrame)
-voronYLeftMargin = min(YmyFrame)
-voronYRightMargin = max(YmyFrame)
+voronXLeftMargin = min(XmyFrame_mm)
+voronXRightMargin = max(XmyFrame_mm)
+voronYLeftMargin = min(YmyFrame_mm)
+voronYRightMargin = max(YmyFrame_mm)
 num_hexagons = LONG(0)
 num_pentagons = LONG(0)
 num_heptagons = LONG(0)
@@ -221,7 +228,7 @@ postshock_num_heptagons = LONG(0)
 postshock_num_othergons = LONG(0)
 FOR I=0, N-1 DO BEGIN & $
   ; Get the ith polygon:
-  VORONOI, XmyFrame, YmyFrame, I, C, Xp, Yp & $
+  VORONOI, XmyFrame_mm, YmyFrame_mm, I, C, Xp, Yp & $
   ; Draw it:
   if (MAX(XP) LE voronXRightMargin AND MAX(YP) LE voronYRightMargin AND MIN(XP) GE voronXLeftMargin AND MIN(YP) GE voronYLeftMargin) then begin
   ;      POLYFILL, Xp, Yp, COLOR = 17 - LONG(DOUBLE((N_ELEMENTS(Xp)) - 10.0d/3.0d) * 3) & $
@@ -277,7 +284,7 @@ endif
 
 endfor
 
-oplot,XmyFrame,YmyFrame,psym=3
+oplot,XmyFrame_mm,YmyFrame_mm,psym=3
 
 num_defects = num_othergons + num_pentagons + num_pentagons
 num_total = num_hexagons + num_defects
@@ -315,7 +322,7 @@ device, filename = filename_wmf
 ;device, /encapsulated
 
 ; Triangulate it:
-TRIANGULATE, XmyFrame, YmyFrame, tr, CONN=C
+TRIANGULATE, XmyFrame_mm, YmyFrame_mm, tr, CONN=C
 ;  stop
 
 N = N_ELEMENTS(XmyFrame);
@@ -325,16 +332,16 @@ N = N_ELEMENTS(XmyFrame);
 
 
 ;  stop
-;plot,XmyFrame,YmyFrame,psym=3, isotropic=1, xrange = [0,forceXlen], yrange = [0,forceYlen],xstyle = 1, ystyle=1,title = 'Voronoi map for unperturbed liquid'
-plot,XmyFrame,YmyFrame,psym=3, isotropic=1, xrange = [plot_xbegin,plot_xend], yrange = [plot_ybegin,plot_yend],xstyle = 1, $
+;plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, xrange = [0,forceXlen], yrange = [0,forceYlen],xstyle = 1, ystyle=1,title = 'Voronoi map for unperturbed liquid'
+plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, xrange = [plot_xbegin,plot_xend], yrange = [plot_ybegin,plot_yend],xstyle = 1, $
   ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0, charthick = 2, $
   /NODATA
 
 
-voronXLeftMargin = min(XmyFrame)
-voronXRightMargin = max(XmyFrame)
-voronYLeftMargin = min(YmyFrame)
-voronYRightMargin = max(YmyFrame)
+voronXLeftMargin = min(XmyFrame_mm)
+voronXRightMargin = max(XmyFrame_mm)
+voronYLeftMargin = min(YmyFrame_mm)
+voronYRightMargin = max(YmyFrame_mm)
 num_hexagons = LONG(0)
 num_pentagons = LONG(0)
 num_heptagons = LONG(0)
@@ -349,7 +356,7 @@ postshock_num_heptagons = LONG(0)
 postshock_num_othergons = LONG(0)
 FOR I=0, N-1 DO BEGIN & $
   ; Get the ith polygon:
-  VORONOI, XmyFrame, YmyFrame, I, C, Xp, Yp & $
+  VORONOI, XmyFrame_mm, YmyFrame_mm, I, C, Xp, Yp & $
   ; Draw it:
   if (MAX(XP) LE voronXRightMargin AND MAX(YP) LE voronYRightMargin AND MIN(XP) GE voronXLeftMargin AND MIN(YP) GE voronYLeftMargin) then begin
   ;      POLYFILL, Xp, Yp, COLOR = 17 - LONG(DOUBLE((N_ELEMENTS(Xp)) - 10.0d/3.0d) * 3) & $
@@ -405,7 +412,7 @@ endif
 
 endfor
 
-oplot,XmyFrame,YmyFrame,psym=3
+oplot,XmyFrame_mm,YmyFrame_mm,psym=3
 
 num_defects = num_othergons + num_pentagons + num_pentagons
 num_total = num_hexagons + num_defects
