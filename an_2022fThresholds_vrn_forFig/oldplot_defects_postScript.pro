@@ -328,6 +328,9 @@ device, xsize= (3 + 3/8) * 2, ysize= ratio * ((8 + 3/8) * 2), /inches
 ;device, FONT_SIZE = 12
 ;device, color=1, bits_per_pixel=24
 ;device, /encapsulated
+stop
+
+ DEVICE, SET_FONT='Times*', /TT_FONT
 
 ; Triangulate it:
 TRIANGULATE, XmyFrame_mm, YmyFrame_mm, tr, CONN=C
