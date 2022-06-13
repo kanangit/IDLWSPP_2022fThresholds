@@ -330,8 +330,14 @@ device, xsize= (3 + 3/8) * 2, ysize= ratio * ((8 + 3/8) * 2), /inches
 ;device, /encapsulated
 stop
 
- DEVICE, SET_FONT='Times*', /TT_FONT
+DEVICE, GET_CURRENT_FONT = khuj
+print, khuj
 
+DEVICE, SET_FONT='Times New Roman'
+ DEVICE, GET_CURRENT_FONT = khuj_font
+ print, khuj_font
+
+stop
 ; Triangulate it:
 TRIANGULATE, XmyFrame_mm, YmyFrame_mm, tr, CONN=C
 ;  stop
