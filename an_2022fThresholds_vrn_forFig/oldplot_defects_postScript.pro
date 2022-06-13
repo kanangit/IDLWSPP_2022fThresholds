@@ -176,6 +176,7 @@ image24 = TVRD(True=1)
 image24 = Reverse(image24, 3)
 
 filename_eps = STRCOMPRESS(filename+'.eps', /REMOVE_ALL)
+filename_pmap_eps = STRCOMPRESS(filename+'_pmapOnly.eps', /REMOVE_ALL)
 filename_tif = STRCOMPRESS(filename+'.tif', /REMOVE_ALL)
 filename_emf = STRCOMPRESS(filename+'.emf', /REMOVE_ALL)
 Write_Tiff, filename_tif, image24, 1;, XRESOL = 300, YRESOL = 300
@@ -184,7 +185,22 @@ Write_Tiff, filename_tif, image24, 1;, XRESOL = 300, YRESOL = 300
 
 
 ;--------------------------------------------------------------------------------------------------------------------------
-;
+originalDevice = !d.name
+set_plot, 'ps'
+device, filename = filename_pmap_eps
+;device, xsize=4, ysize=3, /inches
+device, FONT_SIZE = 12, /TIMES
+device, color=1, bits_per_pixel=24
+device, /encapsulated
+
+plot,XmyFrame_mm,YmyFrame_mm,psym=4, isotropic=1, $
+    xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
+    xstyle = 1, $
+    ystyle=1,title = 'Particle Map', charsize = 1.0, thick = 8.0, charthick = 2
+ 
+    
+device, /close_file
+set_plot, originalDevice
 ;--------------------------------------------------------------------------------------------------------------------------
 
 originalDevice = !d.name
@@ -207,8 +223,6 @@ N = N_ELEMENTS(XmyFrame);
 
 
 
-;  stop
-;plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, xrange = [0,forceXlen], yrange = [0,forceYlen],xstyle = 1, ystyle=1,title = 'Voronoi map for unperturbed liquid'
 plot,XmyFrame_mm,YmyFrame_mm,psym=3, isotropic=1, $
     xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
     xstyle = 1, $
@@ -462,9 +476,9 @@ set_plot, originalDevice
 ;
 ;device, /close_file
 ;set_plot, originalDevice
-;;--------------------------------------------------------------------------------------------------------------------------------------
-;
-;DEVICE, DECOMPOSED=old_decomposed
+;--------------------------------------------------------------------------------------------------------------------------------------
+
+DEVICE, DECOMPOSED=old_decomposed
 
 return, defect_ratio
 END
