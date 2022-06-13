@@ -3,7 +3,7 @@
 FUNCTION oldplot_defects_postScript, XmyFrame, YmyFrame, shockPos, filename
 
   ; Make a vector of 16 points, A[i] = 2pi/16:
-  A = FINDGEN(49) * (!PI*2.0d/48.0d)
+  A = FINDGEN(257) * (!PI*2.0d/256.0d)
   ; Define the symbol to be a unit circle with 16 points,
   ; and set the filled flag:
   USERSYM, COS(A), SIN(A), /FILL
