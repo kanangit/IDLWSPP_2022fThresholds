@@ -17,7 +17,7 @@ PRO driver_an_2022fThresholds_vrn_forFig
   yMax = 1000.0d
 
   ;frame of interest
-  myFrame = 7
+  myFrame = 326
 
 
   ;start and end frames for pulse postition fitting:
