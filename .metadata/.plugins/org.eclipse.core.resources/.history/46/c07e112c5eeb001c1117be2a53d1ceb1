@@ -46,7 +46,7 @@ cam_resol = 0.0254303 ;mm/px
 ;convert px to mm, shift the origin to zero:
 
 XmyFrame_mm =  px_to_mm(XmyFrame, plot_xbegin, cam_resol)
-YmyFrame_mm =  px_to_mm(YmyFrame, plot_ybegin, cam_resol)
+YmyFrame_mm =  px_to_mm(YmyFrame, plot_xbegin, cam_resol)
 plot_xbegin_mm = px_to_mm(plot_xbegin, plot_xbegin, cam_resol)
 plot_xend_mm = px_to_mm(plot_xend, plot_xbegin, cam_resol)
 plot_ybegin_mm = px_to_mm(plot_ybegin, plot_ybegin, cam_resol)

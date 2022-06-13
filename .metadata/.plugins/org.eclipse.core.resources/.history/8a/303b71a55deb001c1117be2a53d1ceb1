@@ -46,11 +46,11 @@ cam_resol = 0.0254303 ;mm/px
 ;convert px to mm, shift the origin to zero:
 
 XmyFrame_mm =  px_to_mm(XmyFrame, plot_xbegin, cam_resol)
-YmyFrame_mm =  px_to_mm(YmyFrame, plot_ybegin, cam_resol)
+YmyFrame_mm =  px_to_mm(YmyFrame, plot_xbegin, cam_resol)
 plot_xbegin_mm = px_to_mm(plot_xbegin, plot_xbegin, cam_resol)
 plot_xend_mm = px_to_mm(plot_xend, plot_xbegin, cam_resol)
-plot_ybegin_mm = px_to_mm(plot_ybegin, plot_ybegin, cam_resol)
-plot_yend_mm = px_to_mm(plot_yend, plot_ybegin, cam_resol)
+plot_ybegin_mm = px_to_mm(plot_ybegin, plot_xbegin, cam_resol)
+plot_yend_mm = px_to_mm(plot_yend, plot_xbegin, cam_resol)
 
 
   ; Triangulate it:
@@ -63,7 +63,7 @@ plot_yend_mm = px_to_mm(plot_yend, plot_ybegin, cam_resol)
 
 
 
- ; stop
+  stop
   plot,XmyFrame_mm,YmyFrame_mm,psym=8, SYMSIZE = 5.0, isotropic=1, $
     xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
     xstyle = 1, $
@@ -206,7 +206,7 @@ plot,XmyFrame_mm,YmyFrame_mm,psym=8, SYMSIZE = 1.0, isotropic=1, $
     xstyle = 1, $
     ystyle=1,title = 'Particle Map', thick = 1.0, charthick = 2
  
-;   stop 
+   stop 
 device, /close_file
 set_plot, originalDevice
 ;--------------------------------------------------------------------------------------------------------------------------
