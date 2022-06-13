@@ -176,7 +176,7 @@ image24 = TVRD(True=1)
 image24 = Reverse(image24, 3)
 
 filename_eps = STRCOMPRESS(filename+'.eps', /REMOVE_ALL)
-filename_pmap_eps = STRCOMPRESS(filename+'_pmapOnly.eps', /REMOVE_ALL)
+filename_pmap_emf = STRCOMPRESS(filename+'_pmapOnly.emf', /REMOVE_ALL)
 filename_tif = STRCOMPRESS(filename+'.tif', /REMOVE_ALL)
 filename_emf = STRCOMPRESS(filename+'.emf', /REMOVE_ALL)
 Write_Tiff, filename_tif, image24, 1;, XRESOL = 300, YRESOL = 300
@@ -187,17 +187,28 @@ Write_Tiff, filename_tif, image24, 1;, XRESOL = 300, YRESOL = 300
 ;--------------------------------------------------------------------------------------------------------------------------
 
 originalDevice = !d.name
-set_plot, 'ps'
-device, filename = filename_pmap_eps
-;device, xsize=4, ysize=3, /inches
-device, FONT_SIZE = 12, /TIMES
-device, color=1, bits_per_pixel=24
-device, /encapsulated
+set_plot, 'METAFILE'
+device, filename = filename_pmap_emf
+device, TRUE_COLOR = 1
 
-plot,XmyFrame_mm,YmyFrame_mm,psym=3, SYMSIZE = 5.0, isotropic=1, $
+
+loadct, 39
+!p.color = 0
+!p.background = 255
+device, xsize= (3 + 3/8) * 2, ysize= ratio * ((8 + 3/8) * 2), /inches
+
+
+DEVICE, GET_CURRENT_FONT = khuj
+print, khuj
+
+DEVICE, SET_FONT='Times New Roman*ITALIC*12', /TT_FONT
+ DEVICE, GET_CURRENT_FONT = khuj_font
+ print, khuj_font
+
+plot,XmyFrame_mm,YmyFrame_mm,psym=4, isotropic=1, $
     xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
     xstyle = 1, $
-    ystyle=1,title = 'Particle Map', thick = 1.0, charthick = 2
+    ystyle=1,title = 'Particle Map';, charsize = 1.0, thick = 8.0, charthick = 2
  
     
 device, /close_file
