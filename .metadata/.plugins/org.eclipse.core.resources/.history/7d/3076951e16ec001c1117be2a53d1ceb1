@@ -147,8 +147,6 @@ pro driver_an_2022fThresholds_plgn_forFig
 
 
   ;The following procedures 'DEVICE', 'LOADCT' and 'WINDOW' are used to set up graphic display options.
-  originalDevice = !d.name
-  set_plot, 'WIN'
   device, retain=2, decomposed =0
   loadct, 39
   !p.color = 0
@@ -224,7 +222,7 @@ pro driver_an_2022fThresholds_plgn_forFig
   
  filename = datapath+ '\outputs\images\' + STRCOMPRESS(coreName+string(frameNumber,FORMAT='(I04)'), /REMOVE_ALL)
     
-  filename_eps = filename+ STRCOMPRESS('_' + seconds + '.eps', /REMOVE_ALL)
+  filename_eps = filename+ '_' + seconds + '.eps'
   filename_pmap_eps = filename+ '_' + seconds +'_pmapOnly.eps'
   filename_tif = filename+STRCOMPRESS('_'+seconds+'.tif', /REMOVE_ALL)
   filename_emf = filename+ '_' + seconds  +'.emf'
@@ -238,76 +236,11 @@ pro driver_an_2022fThresholds_plgn_forFig
   printf,4,vertexStatnew,FORMAT='(F7.1,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1)'
   close,3
   close,4
-
-  set_plot, originalDevice
+  
   
   ;-----------------------------------------------------------------------------------------------------
   ;-----------------------------------------------------------------------------------------------------
-  originalDevice = !d.name
-  set_plot, 'ps'
-  device, filename=filename_eps
-  ;device, xsize=4, ysize=3, /inches
-  device, FONT_SIZE = 12, /TIMES
-  device, color=1, bits_per_pixel=24
-  device, /encapsulated
   
-  
-  plot,X,Y,psym=3, isotropic=1, xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
-    xstyle = 1, ystyle=1, charsize = 2.0, thick = 8.0, charthick = 2, /NODATA, $
-    title = 'polygon construction for frame' + string(frameNumber)
-
-
-  allAngles = 0
-  allSides  = 0
-  numTriangles = 0
-  sideSelector,X,Y,allAngles,allSides,numTriangles
-
-  track = 0
-  maxAngleSelect,allAngles,allSides,numTriangles,track
-
-  sidesToPlot = 0
-  selectAndPlotSides,track,allSides,allAngles,angleThreshold,sidesToPlot
-
-  Ulater=0
-  polygonTracker=0
-  defectClassification=0
-  unt=0
-  polygonIdentification,sidesToPlot,X,Y,numberOfParticles,Ulater,polygonTracker,defectClassification,unt
-
-  start = 2
-  for nu=2,5 do begin
-    numsides=nu
-    polygonIdentification2,polygonTracker,defectClassification,numsides,start,unt
-    start = start+2
-  endfor
-
-  out = 0
-  TriangleCountandPlot,defectClassification,unt,out
-  numTriangles = out
-
-  QuadrilateralCountandPlot,defectClassification,unt,out
-  numQuadrilaterals = out
-
-  PentagonsCountandPlot,defectClassification,unt,out
-  numPentagons = out
-
-  HexagonCountandPlot,defectClassification,unt,out
-  numHexagons = out
-
-  Defect_numbers = [frameNumber,numberOfParticles, numTriangles, numQuadrilaterals, numPentagons,numHexagons]
-
-
-  oplot, X,Y, psym = 3, symsize = 1
-
-  ;plotting the shock front position:
-  plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
-  ;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
-  ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
-
-  
-  
-  device, /close_file
-  set_plot, originalDevice
   
 end
 

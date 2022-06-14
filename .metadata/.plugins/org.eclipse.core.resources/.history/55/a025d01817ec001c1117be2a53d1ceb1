@@ -224,7 +224,7 @@ pro driver_an_2022fThresholds_plgn_forFig
   
  filename = datapath+ '\outputs\images\' + STRCOMPRESS(coreName+string(frameNumber,FORMAT='(I04)'), /REMOVE_ALL)
     
-  filename_eps = filename+ STRCOMPRESS('_' + seconds + '.eps', /REMOVE_ALL)
+  filename_eps = filename+ '_' + seconds + '.eps'
   filename_pmap_eps = filename+ '_' + seconds +'_pmapOnly.eps'
   filename_tif = filename+STRCOMPRESS('_'+seconds+'.tif', /REMOVE_ALL)
   filename_emf = filename+ '_' + seconds  +'.emf'
