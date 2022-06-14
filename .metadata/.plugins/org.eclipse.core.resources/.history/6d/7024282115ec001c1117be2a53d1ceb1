@@ -220,12 +220,12 @@ pro driver_an_2022fThresholds_plgn_forFig
   ;determine system time, to make a filename unique:
   seconds = STRING(SYSTIME(/seconds),FORMAT='(I18)')
   
- filename = datapath+ '\outputs\images\' + STRCOMPRESS(coreName+string(frameNumber,FORMAT='(I04)'), /REMOVE_ALL)
+ filename = datapath+ '\outputs\images\' + STRCOMPRESS(coreName+string(frameNumber,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
     
-  filename_eps = filename+ '_' + seconds + '.eps'
-  filename_pmap_eps = filename+ '_' + seconds +'_pmapOnly.eps'
-  filename_tif = filename+STRCOMPRESS('_'+seconds+'.tif', /REMOVE_ALL)
-  filename_emf = filename+ '_' + seconds  +'.emf'
+  filename_eps = STRCOMPRESS(filename+ '_' + seconds + '.eps', /REMOVE_ALL)
+  filename_pmap_eps = STRCOMPRESS(filename+ '_' + seconds +'_pmapOnly.eps', /REMOVE_ALL)
+  filename_tif = STRCOMPRESS(filename+ '_' + seconds +'.tif', /REMOVE_ALL)
+  filename_emf = STRCOMPRESS(filename+ '_' + seconds  +'.emf', /REMOVE_ALL)
 
 
 
