@@ -47,7 +47,8 @@ cam_resol = 0.0254303 ;mm/px
   ; and set the filled flag:
   USERSYM, COS(A), SIN(A), /FILL
   
-
+  ;determine system time, to make a filename unique:
+  seconds = STRING(SYSTIME(/seconds),FORMAT='(I18)')
 
 
 ;convert px to mm, shift the origin to zero:
@@ -189,14 +190,10 @@ image24[2,*,*] = b[scaled]
 image24 = TVRD(True=1)
 image24 = Reverse(image24, 3)
 
-
-;determine system time, to make a filename unique:
-seconds = STRING(SYSTIME(/seconds),FORMAT='(I18)')
-
-filename_eps = STRCOMPRESS(filename+ '_' + seconds + '_' + '.eps', /REMOVE_ALL)
-filename_pmap_eps = STRCOMPRESS(filename+ '_' + seconds + '_' +'_pmapOnly.eps', /REMOVE_ALL)
-filename_tif = STRCOMPRESS(filename+ '_' + seconds + '_' +'.tif', /REMOVE_ALL)
-filename_emf = STRCOMPRESS(filename+ '_' + seconds + '_' +'.emf', /REMOVE_ALL)
+filename_eps = STRCOMPRESS(filename+'.eps', /REMOVE_ALL)
+filename_pmap_eps = STRCOMPRESS(filename+'_pmapOnly.eps', /REMOVE_ALL)
+filename_tif = STRCOMPRESS(filename+'.tif', /REMOVE_ALL)
+filename_emf = STRCOMPRESS(filename+'.emf', /REMOVE_ALL)
 Write_Tiff, filename_tif, image24, 1;, XRESOL = 300, YRESOL = 300
 
 

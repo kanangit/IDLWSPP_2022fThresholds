@@ -193,10 +193,10 @@ image24 = Reverse(image24, 3)
 ;determine system time, to make a filename unique:
 seconds = STRING(SYSTIME(/seconds),FORMAT='(I18)')
 
-filename_eps = STRCOMPRESS(filename+ '_' + seconds + '_' + '.eps', /REMOVE_ALL)
-filename_pmap_eps = STRCOMPRESS(filename+ '_' + seconds + '_' +'_pmapOnly.eps', /REMOVE_ALL)
-filename_tif = STRCOMPRESS(filename+ '_' + seconds + '_' +'.tif', /REMOVE_ALL)
-filename_emf = STRCOMPRESS(filename+ '_' + seconds + '_' +'.emf', /REMOVE_ALL)
+filename_eps = STRCOMPRESS(filename+ '_' + seconds + + '_' + '.eps', /REMOVE_ALL)
+filename_pmap_eps = STRCOMPRESS(filename+ '_' + seconds + + '_' +'_pmapOnly.eps', /REMOVE_ALL)
+filename_tif = STRCOMPRESS(filename+ '_' + seconds + + '_' +'.tif', /REMOVE_ALL)
+filename_emf = STRCOMPRESS(filename+ '_' + seconds + + '_' +'.emf', /REMOVE_ALL)
 Write_Tiff, filename_tif, image24, 1;, XRESOL = 300, YRESOL = 300
 
 
