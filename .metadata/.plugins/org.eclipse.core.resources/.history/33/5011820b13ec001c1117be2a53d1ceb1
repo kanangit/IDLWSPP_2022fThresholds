@@ -24,8 +24,8 @@ pro driver_an_2022fThresholds_plgn_forFig
   ;start and end frames for pulse postition fitting:
   iBegin_ppulse = 521
   iEnd_ppulse = 624
-
-
+  
+  
 
   CD, datapath
   CD, 'inputs'
@@ -66,8 +66,8 @@ pro driver_an_2022fThresholds_plgn_forFig
   plot_yend = 1000;
   plot_xbegin = 0
   plot_xend = 1000
-
-
+  
+  
   preshock_offset = 50.0
   postshock_offset = 50.0
 
@@ -83,8 +83,8 @@ pro driver_an_2022fThresholds_plgn_forFig
   postshock_right_y = [textHeight, plot_yend]
   preshock_left_x = [preshock_left_border, preshock_left_border]
   preshock_left_y = [textHeight, plot_yend]
-
-
+  
+  
   screenWidth = 1600
   ratio = DOUBLE(plot_yend - plot_ybegin)/DOUBLE(plot_xend - plot_xbegin)
 
@@ -124,25 +124,12 @@ pro driver_an_2022fThresholds_plgn_forFig
 
   numberOfParticles = size(Xtemp,/N_ELEMENTS) ;Total number of particle coordinates in the current frame.
 
-
-  ;convert px to mm, shift the origin to zero:
-  cam_resol = 0.0254303 ;mm/px
-  Xtemp_mm =  px_to_mm(Xtemp, plot_xbegin, cam_resol)
-  Ytemp_mm =  px_to_mm(Ytemp, plot_ybegin, cam_resol)
-  plot_xbegin_mm = px_to_mm(plot_xbegin, plot_xbegin, cam_resol)
-  plot_xend_mm = px_to_mm(plot_xend, plot_xbegin, cam_resol)
-  plot_ybegin_mm = px_to_mm(plot_ybegin, plot_ybegin, cam_resol)
-  plot_yend_mm = px_to_mm(plot_yend, plot_ybegin, cam_resol)
-  shockfront_x_mm = px_to_mm(shockfront_x, plot_xbegin, cam_resol)
-  shockfront_y_mm = px_to_mm(shockfront_y, plot_ybegin, cam_resol)
-
-
   X = fltarr(numberOfParticles,1)
   Y = fltarr(numberOfParticles,1)
 
   for particle=0,numberOfParticles-1 do begin
-    X(particle,0) = Xtemp_mm[particle]
-    Y(particle,0) = Ytemp_mm[particle]
+    X(particle,0) = Xtemp[particle]
+    Y(particle,0) = Ytemp[particle]
   endfor
 
 
@@ -154,7 +141,7 @@ pro driver_an_2022fThresholds_plgn_forFig
   window, 2, xsize = screenWidth, ysize =screenWidth*ratio
 
 
-  plot,X,Y,psym=3, isotropic=1, xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
+  plot,X,Y,psym=3, isotropic=1, xrange = [plot_xbegin,plot_xend], yrange = [plot_ybegin,plot_yend], $
     xstyle = 1, ystyle=1, charsize = 2.0, thick = 8.0, charthick = 2, /NODATA, $
     title = 'polygon construction for frame' + string(frameNumber)
 
@@ -164,17 +151,26 @@ pro driver_an_2022fThresholds_plgn_forFig
   numTriangles = 0
   sideSelector,X,Y,allAngles,allSides,numTriangles
 
+
   track = 0
   maxAngleSelect,allAngles,allSides,numTriangles,track
 
+
+
   sidesToPlot = 0
   selectAndPlotSides,track,allSides,allAngles,angleThreshold,sidesToPlot
+
+
+
 
   Ulater=0
   polygonTracker=0
   defectClassification=0
   unt=0
   polygonIdentification,sidesToPlot,X,Y,numberOfParticles,Ulater,polygonTracker,defectClassification,unt
+
+
+
 
   start = 2
   for nu=2,5 do begin
@@ -183,31 +179,47 @@ pro driver_an_2022fThresholds_plgn_forFig
     start = start+2
   endfor
 
+
+
+
   out = 0
   TriangleCountandPlot,defectClassification,unt,out
   numTriangles = out
 
+
+
   QuadrilateralCountandPlot,defectClassification,unt,out
   numQuadrilaterals = out
 
+
+
   PentagonsCountandPlot,defectClassification,unt,out
   numPentagons = out
+
+
+
 
   HexagonCountandPlot,defectClassification,unt,out
   numHexagons = out
 
   Defect_numbers = [frameNumber,numberOfParticles, numTriangles, numQuadrilaterals, numPentagons,numHexagons]
+
+  ;The following 'PRINTF' procedure is peculiar to IDL.
+  ;PRINT procedures perform formatted output
+  ;It is used below to write row matrix 'Defect_numbers' to the file unit 3.
   printf,3,Defect_numbers
 
   oplot, X,Y, psym = 3, symsize = 1
 
   ;plotting the shock front position:
-  plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
-  ;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
-  ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
+  plots, shockfront_x, shockFront_y, THICK = 3
+  plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
+  plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 
-
+  ;The following 'TVRD', 'TVLCT' and 'WRITETIFF' routines are peculiar to IDL.
+  ;They are used below to save tiff images of polygon construction.
   scaled = TVRD()
+
   TVLCT, r, g, b, /Get
   s = Size(scaled, /Dimensions)
   image24 = BytArr(3, s[0], s[1])
@@ -221,9 +233,12 @@ pro driver_an_2022fThresholds_plgn_forFig
 
   Write_Tiff, fname, image24, 1
 
+
+
   VertexClassification,defectClassification,numberOfParticles,Ulater,frameNumber,out
   vertexStatnew = out
   printf,4,vertexStatnew,FORMAT='(F7.1,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1,1X,F7.1)'
+
   close,3
   close,4
 end
