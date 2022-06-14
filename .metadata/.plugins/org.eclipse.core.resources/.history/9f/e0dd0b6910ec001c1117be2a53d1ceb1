@@ -71,6 +71,9 @@ pro driver_an_2022fThresholds_plgn_forFig
   ratio = DOUBLE(plot_yend - plot_ybegin)/DOUBLE(plot_xend - plot_xbegin)
 
 
+  startFrame = iBegin
+  endFrame = iEnd
+
   ;INPUT5
   angleThreshold = 75.0
 
@@ -150,17 +153,79 @@ frameNumber = myFrame
     numTriangles = 0
     sideSelector,X,Y,allAngles,allSides,numTriangles
 
-    
+    ;User defined procedure 2: 'maxAngleSelect'
+    ;
+    ;This procedure is used below to perform the following tasks.
+    ;
+    ;I. Identify duplicate entries of bonds from the matrix 'allSides' and track
+    ;   them with the use of a new matrix 'track'
+    ;II.Update matrix 'allAngles' so that it contains value of the maximum angle opposite to a given bond.
+    ;
+    ;The arguments for this procedure are as follows.
+    ;
+    ; 1.allAngles(matrix): Updated matrix from the procedure 'sideSelector'.
+    ;
+    ; 2.allSides(matrix): Updated matrix from the procedure 'sideSelector'.
+    ;
+    ; 3.numTriangles(variable): Updated variable from the procedure 'sideSelector'.
+    ;
+    ; 4.track(matrix): On exit, contains values 0 or -5
+    ;   value of 0 in row 3 (of matrix 'track') for example implies that a bond in row 3 of the matrix 'allSides'
+    ;   is found for the first time.
+    ;   value of -5 in row 4 (of matrix 'track') for example implies that a triangle side in row 4 has a duplicate entry in
+    ;   one of the rows 1-3 of the matrix 'allSides'.
+    ;
+    ; 5.allAngles(matrix): On exit, contains the maximum angle opposite to a given bond.
+    ;
+
     track = 0
     maxAngleSelect,allAngles,allSides,numTriangles,track
 
-    
+    ;User defined procedure 3: 'selectAngPlotSides'
+    ;
+    ;This procedure is used below to select the bonds that are opposite angles less than or equal to the threshold value, and plot them.
+    ;
+    ;The arguments for this procedure are as follows.
+    ;
+    ;1.track(matrix): Updated matrix from the procedure 'maxAngleSelect'.
+    ;
+    ;2.allSides(matrix): Updated matrix from the procedure 'maxAngleSelect'.
+    ;
+    ;3.allAngles(matrix): Updated matrix from the procedure 'maxAngleSelect'.
+    ;
+    ;4.angleThreshold(variable): INPUT5
+    ;
+    ;5.sidesToPlot(matrix): On exit, contains the X and Y coordinates of the end points of a
+    ;  given bond that has not been removed. The X and Y coordinates for this end points are stored here similar to the
+    ;  format in matrix 'allSides'.
 
     sidesToPlot = 0
     selectAndPlotSides,track,allSides,allAngles,angleThreshold,sidesToPlot
 
 
-    
+    ;User defined procedure 4: 'polygonIdentification'
+    ;
+    ;It is used below to identify bonds attached to a given particle position and arrange them according to the ascending
+    ;order of angles they make with the positive X axis.
+    ;
+    ;The arguments for this procedure are as follows.
+    ;
+    ;1.sidesToPlot(matrix): Updated matrix from the procedure 'selectAndPlotSides'.
+    ;
+    ;2.X(matrix): X coordinates of the particle positions in the current frame.
+    ;
+    ;3.Y(matrix: Y coordinates of the particle positions in the current frame.
+    ;
+    ;4.numberOfParticles(variable): Total number of particle positions in the current frame.
+    ;
+    ;5.Ulater(matrix): On exit, contains the  number of bonds attached to a given particle position.
+    ;
+    ;6.polygonTracker(matrix): A temporary matrix.
+    ;
+    ;7.defectClassification(matrix): On exit, contains the end point coordinates of bonds attached to a given particle position according to
+    ; the ascending order of angles the bonds make with the positive X axis.
+    ;
+    ;8.unt(variable): On exit, contains the number of rows in the matrix 'defectClassification' which has bond information.
 
     Ulater=0
     polygonTracker=0
@@ -169,7 +234,21 @@ frameNumber = myFrame
     polygonIdentification,sidesToPlot,X,Y,numberOfParticles,Ulater,polygonTracker,defectClassification,unt
 
 
-    
+    ;User defined procedure 5: 'polygonIdentification2'
+    ;
+    ;It is used below to identify polygons (triangles,quadrilaterals,pentagons and hexagons).
+    ;
+    ;The arguments for this procedure are as follows.
+    ;
+    ;1.polygonTracker(matrix): Updated matrix from the procedure 'polygonIdnetification'.
+    ;
+    ;2.defectClassification(matrix): Updated matrix from the procedure 'polygonIdnetification'.
+    ;
+    ;3.numsides(variable): Number of sides of the polygon - 1.
+    ;
+    ;4.start(variable): First column number of matrix 'defectClassification' to start searching for a particular polygon.
+    ;
+    ;5.unt(variable): Updated matrix from the procedure 'polygonIdnetification'.
 
     start = 2
     for nu=2,5 do begin
@@ -179,24 +258,66 @@ frameNumber = myFrame
     endfor
 
 
-    
+    ;User defined procedure 6: 'TriangleCountandPlot'
+    ;
+    ;It is used below to count and plot triangles.
+    ;
+    ;The arguments for this procedure are as follows.
+    ;
+    ;1.defectClassification(matrix): Updated matrix from procedure 'polygonIdentification2'.
+    ;
+    ;2.unt(variable): Updated variable from procedure 'polygonIdentification2'.
+    ;
+    ;3.out(variable): On exit, contains the total number of triangles in the polygon construction for current frame.
 
     out = 0
     TriangleCountandPlot,defectClassification,unt,out
     numTriangles = out
 
-    
+    ;User defined procedure 7: 'QuadrilateralCountandPlot'
+    ;
+    ;It is used below to count and plot quadrilaterals.
+    ;
+    ;The arguments for this procedure are as follows.
+    ;
+    ;1.defectClassification(matrix): Updated matrix from procedure 'polygonIdentification2'.
+    ;
+    ;2.unt(variable): Updated variable from procedure 'polygonIdentification2'.
+    ;
+    ;3.out(variable): On exit, contains the total number of quadrilaterals in the polygon construction for current frame.
 
     QuadrilateralCountandPlot,defectClassification,unt,out
     numQuadrilaterals = out
 
-    
+    ;User defined procedure 8: 'PentagonCountandPlot'
+    ;
+    ;It is used below to count and plot pentagons.
+    ;
+    ;The arguments for this procedure are as follows.
+    ;
+    ;1.defectClassification(matrix): Updated matrix from procedure 'polygonIdentification2'.
+    ;
+    ;2.unt(variable): Updated variable from procedure 'polygonIdentification2'.
+    ;
+    ;3.out(variable): On exit, contains the total number of pentagons in the polygon construction for current frame.
+
 
     PentagonsCountandPlot,defectClassification,unt,out
     numPentagons = out
 
 
-   
+    ;User defined procedure 9: 'HexagonCountandPlot'
+    ;
+    ;It is used below to count and plot hexagons.
+    ;
+    ;The arguments for this procedure are as follows.
+    ;
+    ;1.defectClassification(matrix): Updated matrix from procedure 'polygonIdentification2'.
+    ;
+    ;2.unt(variable): Updated variable from procedure 'polygonIdentification2'.
+    ;
+    ;3.out(variable): On exit, contains the total number of hexagons in the polygon construction for current frame.
+
 
     HexagonCountandPlot,defectClassification,unt,out
     numHexagons = out
@@ -232,7 +353,21 @@ frameNumber = myFrame
 
     Write_Tiff, fname, image24, 1
 
-  
+    ;User defined procedure 10: 'VertexClassification'
+    ;
+    ;It is used below to perform a vertex classification.
+    ;
+    ;The arguments for this procedure are as follows.
+    ;
+    ;defectClassification(matrix): Updated matrix from procedure 'HexagonCountandPlot'.
+    ;
+    ;numberOfParticles(variable): Total number of particle positions in the current frame.
+    ;
+    ;Ulater(matrix): Updated matrix from procedure 'polygonIdentification'.
+    ;
+    ;frameNumber(variable): Current frame number.
+    ;
+    ;out(matrix): On exit, contains the number of vertices for various vertex types.
 
     VertexClassification,defectClassification,numberOfParticles,Ulater,frameNumber,out
     vertexStatnew = out

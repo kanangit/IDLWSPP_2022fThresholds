@@ -71,6 +71,9 @@ pro driver_an_2022fThresholds_plgn_forFig
   ratio = DOUBLE(plot_yend - plot_ybegin)/DOUBLE(plot_xend - plot_xbegin)
 
 
+  startFrame = iBegin
+  endFrame = iEnd
+
   ;INPUT5
   angleThreshold = 75.0
 
