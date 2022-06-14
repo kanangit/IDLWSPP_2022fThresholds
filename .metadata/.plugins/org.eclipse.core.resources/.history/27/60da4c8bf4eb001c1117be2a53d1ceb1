@@ -58,8 +58,7 @@ plot_xbegin_mm = px_to_mm(plot_xbegin, plot_xbegin, cam_resol)
 plot_xend_mm = px_to_mm(plot_xend, plot_xbegin, cam_resol)
 plot_ybegin_mm = px_to_mm(plot_ybegin, plot_ybegin, cam_resol)
 plot_yend_mm = px_to_mm(plot_yend, plot_ybegin, cam_resol)
-shockfront_x_mm = px_to_mm(shockfront_x, plot_xbegin, cam_resol)
-shockfront_y_mm = px_to_mm(shockfront_y, plot_ybegin, cam_resol)
+
 
   ; Triangulate it:
   TRIANGULATE, XmyFrame_mm, YmyFrame_mm, tr, CONN=C
@@ -173,7 +172,7 @@ postshock_defect_ratio = DOUBLE(postshock_num_defects) / DOUBLE(postshock_num_to
   COLOR = 254
 
 ;plotting the shock front position:
-plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
+;plots, shockfront_x, shockFront_y, THICK = 3
 ;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
 ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 ; Reset device paramters
@@ -344,7 +343,7 @@ postshock_defect_ratio = DOUBLE(postshock_num_defects) / DOUBLE(postshock_num_to
 ;  COLOR = 254
 
 ;plotting the shock front position:
-plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
+;plots, shockfront_x, shockFront_y, THICK = 3
 ;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
 ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 ; Reset device paramters
