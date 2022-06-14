@@ -72,7 +72,7 @@ pro driver_an_2022fThresholds_plgn_forFig
   postshock_offset = 50.0
 
   textHeight = 525
-  shockPos = coeffs[0] + myFrame * coeffs[1]
+  shockPos = coeffs[0] + frameNumber * coeffs[1]
   postshock_right_border = shockPos - preshock_offset
   preshock_left_border = shockPos + postshock_offset
 
