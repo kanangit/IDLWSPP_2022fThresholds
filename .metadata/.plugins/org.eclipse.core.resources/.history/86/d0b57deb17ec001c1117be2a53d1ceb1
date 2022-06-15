@@ -1,9 +1,11 @@
 pro driver_an_2022fThresholds_plgn_forFig
 
-  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220614forP_2022fThresholds_fig\06_code_an_2022fThresholds_plgn_forFig_f326\'
+  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220614forP_2022fThresholds_fig\05_code_an_2022fThresholds_plgn_forFig_f544\'
 
 
   ;start and end frames for pulse postition fitting:
+  iBegin_ppulse = 1469
+  iEnd_ppulse = 2093
 
   curDate='20220607'
   print, curDate
@@ -17,7 +19,7 @@ pro driver_an_2022fThresholds_plgn_forFig
 
 
   ;frame of interest
-  myFrame = 326
+  myFrame = 544
 
   ;start and end frames for pulse postition fitting:
   iBegin_ppulse = 521
@@ -202,7 +204,7 @@ pro driver_an_2022fThresholds_plgn_forFig
   oplot, X,Y, psym = 3, symsize = 1
 
   ;plotting the shock front position:
-  ;plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
+  plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
   ;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
   ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 
@@ -244,14 +246,14 @@ pro driver_an_2022fThresholds_plgn_forFig
   originalDevice = !d.name
   set_plot, 'ps'
   device, filename=filename_eps
-  device, xsize= 1.5 * (3 + 3/8), ysize=  ratio * 1.5 * ((3 + 3/8)), /inches
+  device, xsize= (3 + 3/8), ysize= ratio * ((8 + 3/8)), /inches
   device, FONT_SIZE = 12, /TIMES
   device, color=1, bits_per_pixel=24
   device, /encapsulated
   
   
   plot,X,Y,psym=3, isotropic=1, xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
-    xstyle = 1, ystyle=1, charsize = 0.8, thick = 8.0, charthick = 1, /NODATA, $
+    xstyle = 1, ystyle=1, charsize = 1.0, thick = 8.0, charthick = 2, /NODATA, $
     title = 'polygon construction for frame' + string(frameNumber)
 
 
@@ -298,7 +300,7 @@ pro driver_an_2022fThresholds_plgn_forFig
   oplot, X,Y, psym = 3, symsize = 1
 
   ;plotting the shock front position:
-  ;plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
+  plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
   ;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
   ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 

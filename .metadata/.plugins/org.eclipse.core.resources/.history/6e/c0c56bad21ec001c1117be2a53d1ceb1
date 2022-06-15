@@ -17,7 +17,7 @@ pro driver_an_2022fThresholds_plgn_forFig
 
 
   ;frame of interest
-  myFrame = 326
+  myFrame = 544
 
   ;start and end frames for pulse postition fitting:
   iBegin_ppulse = 521
@@ -202,7 +202,7 @@ pro driver_an_2022fThresholds_plgn_forFig
   oplot, X,Y, psym = 3, symsize = 1
 
   ;plotting the shock front position:
-  ;plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
+  plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
   ;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
   ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 
@@ -298,7 +298,7 @@ pro driver_an_2022fThresholds_plgn_forFig
   oplot, X,Y, psym = 3, symsize = 1
 
   ;plotting the shock front position:
-  ;plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
+  plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
   ;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
   ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 
