@@ -75,8 +75,7 @@ PRO driver_2022fThresholds_polyfill
      /NODATA
      
   POLYFILL, X*resol, Y*resol, COLOR = 140, linestyle = 0,thick = 0.5 & $
-   oplot, SHIFT(X,1)*resol, SHIFT(Y,1)*resol
-
+   oplot, X*resol, Y*resol
  
  device, /close_file
  set_plot, originalDevice
