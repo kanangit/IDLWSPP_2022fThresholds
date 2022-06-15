@@ -17,7 +17,7 @@ pro driver_an_2022fThresholds_plgn_forFig
 
 
   ;frame of interest
-  myFrame = 544
+  myFrame = 524
 
   ;start and end frames for pulse postition fitting:
   iBegin_ppulse = 521

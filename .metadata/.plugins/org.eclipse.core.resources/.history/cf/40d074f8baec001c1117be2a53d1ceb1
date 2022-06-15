@@ -17,7 +17,7 @@ pro driver_an_2022fThresholds_plgn_forFig
 
 
   ;frame of interest
-  myFrame = 544
+  myFrame = 524
 
   ;start and end frames for pulse postition fitting:
   iBegin_ppulse = 521
@@ -71,15 +71,15 @@ pro driver_an_2022fThresholds_plgn_forFig
 
   textHeight = 525
   shockPos = coeffs[0] + myFrame * coeffs[1]
-
+  
   shockPos_indiv = 762.345034846977d
-
+  
   postshock_right_border = shockPos - preshock_offset
   preshock_left_border = shockPos + postshock_offset
 
   shockfront_x = [shockPos, shockPos]
   shockFront_y = [textHeight, plot_yend]
-
+  
   shockfront_indiv_x = [shockPos_indiv, shockPos_indiv]
   shockFront_indiv_y = [textHeight, plot_yend]
 
@@ -139,8 +139,6 @@ pro driver_an_2022fThresholds_plgn_forFig
   plot_yend_mm = px_to_mm(plot_yend, plot_ybegin, cam_resol)
   shockfront_x_mm = px_to_mm(shockfront_x, plot_xbegin, cam_resol)
   shockfront_y_mm = px_to_mm(shockfront_y, plot_ybegin, cam_resol)
-  shockfront_indiv_x_mm = px_to_mm(shockfront_indiv_x, plot_xbegin, cam_resol)
-  shockfront_indiv_y_mm = px_to_mm(shockfront_indiv_y, plot_ybegin, cam_resol)
 
 
   X = fltarr(numberOfParticles,1)
@@ -210,12 +208,10 @@ pro driver_an_2022fThresholds_plgn_forFig
   oplot, X,Y, psym = 3, symsize = 1
 
   ;plotting the shock front position:
-  plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
+  ;plots, shockfront_x_mm, shockFront_y_mm, THICK = 3
   ;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
   ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 
-
-  plots, shockfront_indiv_x_mm, shockfront_indiv_y_mm, COLOR = 60, THICK = 2
 
   scaled = TVRD()
   TVLCT, r, g, b, /Get
@@ -226,12 +222,12 @@ pro driver_an_2022fThresholds_plgn_forFig
   image24[2,*,*] = b[scaled]
   image24 = TVRD(True=1)
   image24 = Reverse(image24, 3)
-
+  
   ;determine system time, to make a filename unique:
   seconds = STRING(SYSTIME(/seconds),FORMAT='(I18)')
-
-  filename = datapath+ '\outputs\images\' + STRCOMPRESS(coreName+string(frameNumber,FORMAT='(I04)'), /REMOVE_ALL)
-
+  
+ filename = datapath+ '\outputs\images\' + STRCOMPRESS(coreName+string(frameNumber,FORMAT='(I04)'), /REMOVE_ALL)
+    
   filename_eps = filename+ STRCOMPRESS('_' + seconds + '.eps', /REMOVE_ALL)
   filename_pmap_eps = filename+ '_' + seconds +'_pmapOnly.eps'
   filename_tif = filename+STRCOMPRESS('_'+seconds+'.tif', /REMOVE_ALL)
@@ -248,7 +244,7 @@ pro driver_an_2022fThresholds_plgn_forFig
   close,4
 
   set_plot, originalDevice
-
+  
   ;-----------------------------------------------------------------------------------------------------
   ;-----------------------------------------------------------------------------------------------------
   originalDevice = !d.name
@@ -258,8 +254,8 @@ pro driver_an_2022fThresholds_plgn_forFig
   device, FONT_SIZE = 12, /TIMES
   device, color=1, bits_per_pixel=24
   device, /encapsulated
-
-
+  
+  
   plot,X,Y,psym=3, isotropic=1, xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
     xstyle = 1, ystyle=1, charsize = 0.8, thick = 8.0, charthick = 1, /NODATA, $
     title = 'polygon construction for frame' + string(frameNumber)
@@ -312,10 +308,10 @@ pro driver_an_2022fThresholds_plgn_forFig
   ;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
   ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 
-  plots, shockfront_indiv_x_mm, shockfront_indiv_y_mm, COLOR = 60, THICK = 2
-
+  
+  
   device, /close_file
   set_plot, originalDevice
-
+  
 end
 
