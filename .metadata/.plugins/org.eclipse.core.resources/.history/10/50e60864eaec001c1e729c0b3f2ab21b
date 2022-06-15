@@ -11,17 +11,6 @@ PRO driver_2022fThresholds_polyfill
 
   filename_eps = filename+ STRCOMPRESS('_' + seconds + '.eps', /REMOVE_ALL)
   
-  
-  resol = 0.0254303 ;mm/px
-  
-  plot_ybegin_mm = 0;
-  plot_yend_mm = 100;
-  plot_xbegin_mm = 0
-  plot_xend_mm = 100
-  
-  screenWidth = 900
-  ratio = DOUBLE(1)
-  
   ; Create the vectors of X and Y values:
   X = [30, 100, 100, 30] & Y = [30, 30, 100, 100]
   
@@ -34,16 +23,8 @@ PRO driver_2022fThresholds_polyfill
   loadct, 39
   !p.color = 0
   !p.background = 255
-   window, 2, xsize = screenWidth, ysize =screenWidth*ratio
-   
-   plot,X*resol,Y*resol, isotropic=1, $
-     xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
-     xstyle = 1, $
-     ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0, charthick = 2, $
-     /NODATA
-     
-  POLYFILL, X*resol, Y*resol, COLOR = 140, linestyle = 0,thick = 0.5 & $
-   oplot, X*resol, Y*resol
+  
+  POLYFILL, X, Y, COLOR = 140, /DEVICE
   
   set_plot, originalDevice
   
@@ -65,16 +46,12 @@ PRO driver_2022fThresholds_polyfill
 
   ; Fill the polygon with color index 175:
 
-  ;POLYFILL, X, Y, COLOR = 140, /DEVICE
+  POLYFILL, X, Y, COLOR = 140, /DEVICE
 
-   plot,X*resol,Y*resol, isotropic=1, $
-     xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
-     xstyle = 1, $
-     ystyle=1,title = 'Voronoi map', charsize = 2.0, thick = 8.0, charthick = 2, $
-     /NODATA
-     
-  POLYFILL, X*resol, Y*resol, COLOR = 140, linestyle = 0,thick = 0.5 & $
-   oplot, X*resol, Y*resol
+  ;POLYFILL, X, Y, COLOR = 140, linestyle = 0,thick = 0.5, /DEVICE & $
+  ; oplot, X, Y
+  device, /close_file
+  set_plot, originalDevice
   
   DEVICE, DECOMPOSED=old_decomposed
 END
