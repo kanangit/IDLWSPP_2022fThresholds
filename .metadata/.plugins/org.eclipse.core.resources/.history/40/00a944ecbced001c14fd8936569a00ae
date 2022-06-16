@@ -1,6 +1,6 @@
 PRO driver_2022fThresholds_polyfill
 
-khuj = get_polygon(5, 8)
+khuj = get_polygon
 
   coreName = 'triangle'
 
