@@ -19,17 +19,5 @@ PRO driver_2022fThresholds_polyfill
   coord_number = 5
   COLOR = 40
   plot_suc = plot_polygon(coreName, coord_number, R, COLOR)
-  
-  coreName = 'vrn_heptagons'
-  coord_number = 7
-  COLOR = 215
-  plot_suc = plot_polygon(coreName, coord_number, R, COLOR)
-  
-  
-  coreName = 'vrn_quadrugons'
-  coord_number = 4
-  COLOR = coord_number*30 + 20
-  plot_suc = plot_polygon(coreName, coord_number, R, COLOR)
-  stop
 
 END
