@@ -21,8 +21,8 @@ PRO driver_an_2022fThresholds_vrn
   
   
   ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 513
-  iEnd_ppulse = 614
+  iBegin_ppulse = 521
+  iEnd_ppulse = 624
 
 
   CD, datapath

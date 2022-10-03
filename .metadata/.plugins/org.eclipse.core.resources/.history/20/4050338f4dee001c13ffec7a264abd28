@@ -90,7 +90,7 @@ FUNCTION oldplot_defects, XmyFrame, YmyFrame, shockPos, filename
           preshock_num_hexagons = preshock_num_hexagons + 1
         if (MAX(Xp) LE postshock_right_border) THEN $
           postshock_num_hexagons = postshock_num_hexagons + 1
-        POLYFILL, Xp, Yp, COLOR = 255, linestyle = 0,thick = 0.5 & $
+        POLYFILL, Xp, Yp, COLOR = 140, linestyle = 0,thick = 0.5 & $
           oplot, Xp, Yp
         break
       end
@@ -120,7 +120,7 @@ FUNCTION oldplot_defects, XmyFrame, YmyFrame, shockPos, filename
           preshock_num_othergons = preshock_num_othergons + 1
         if (MAX(Xp) LE postshock_right_border) THEN $
           postshock_num_othergons = postshock_num_othergons + 1
-        POLYFILL, Xp, Yp, COLOR = (coordNumber*2  ), linestyle = 0,thick = 0.5 & $
+        POLYFILL, Xp, Yp, COLOR = (coordNumber*30 + 20  ), linestyle = 0,thick = 0.5 & $
           oplot, Xp, Yp
       end
     endswitch

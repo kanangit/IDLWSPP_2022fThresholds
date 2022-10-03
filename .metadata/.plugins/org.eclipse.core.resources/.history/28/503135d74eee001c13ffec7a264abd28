@@ -19,7 +19,6 @@ PRO driver_2022fThresholds_polyfill
   coord_number = 5
   COLOR = 40
   plot_suc = plot_polygon(coreName, coord_number, R, COLOR)
-  stop
   
   coreName = 'vrn_heptagons'
   coord_number = 7
@@ -35,7 +34,7 @@ PRO driver_2022fThresholds_polyfill
   
   
   coreName = 'vrn_manygons'
-  coord_number = 3
+  coord_number = 5
   COLOR = coord_number*30 + 20
   print, COLOR
   plot_suc = plot_polygon(coreName, coord_number, R, COLOR)
