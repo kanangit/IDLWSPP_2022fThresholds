@@ -1,4 +1,4 @@
-;v. 1.2. Added range selection for pulse position.
+;v. 1.2. Added range selection for pulse position
 
 PRO driver_an_2022fThresholds_vrn
 ;
