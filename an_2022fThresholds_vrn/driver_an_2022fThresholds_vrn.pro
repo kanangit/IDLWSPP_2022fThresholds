@@ -3,9 +3,9 @@
 PRO driver_an_2022fThresholds_vrn
 ;
 
-  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220617forP_2022fThresholds\01_code_an_2022fThresholds_vrn\'
+  datapath = 'C:\Users\kanton\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20230622forP_2022fThresholds_test\01_code_an_2022fThresholds_vrn\'
 
-  curDate='20220617'
+  curDate='20230622'
   print, curDate
   print, datapath
   coreName = STRCOMPRESS('voronoiMap_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
