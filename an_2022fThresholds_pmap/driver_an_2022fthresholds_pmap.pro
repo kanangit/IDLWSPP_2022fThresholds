@@ -65,7 +65,7 @@ PRO driver_an_2022fThresholds_pmap
     
     p = plot(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], LINESTYLE = 'none',  $
       SYMBOL = 'dot', ASPECT_RATIO = 1, SYM_SIZE = 3, SYM_FILLED = 1, $
-      Margin = [0.01,0.01,0.01,0.01], $
+      Margin = [0.05,0.05,0.05,0.05], $
        DIMENSIONS = [plot_hor_size, plot_hor_size * screen_ratio], /CURRENT)
     p.save, fname
     w = p.WINDOW
