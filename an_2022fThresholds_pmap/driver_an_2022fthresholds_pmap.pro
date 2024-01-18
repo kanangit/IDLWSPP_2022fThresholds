@@ -1,9 +1,9 @@
 PRO driver_an_2022fThresholds_pmap
-;test; test test test
 
-  datapath = 'C:\Users\kanton\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20230628forP_2022fThresholds_pmap\01_an_2022fThresholds_pmap\'
 
-  curDate='20230628'
+  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20240117forP_2022fThresholds_pmap\01_an_2022fThresholds_pmap\'
+
+  curDate='20240117'
   print, curDate
   print, datapath
   coreName = STRCOMPRESS('particles_map_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
@@ -12,15 +12,18 @@ PRO driver_an_2022fThresholds_pmap
   rightBorder= 1000.0d;
   yMin = 0.0d;
   yMax = 1000.0d
+  
+  screen_ratio =  DOUBLE(rightBorder - leftBorder) / DOUBLE(yMax - yMin)
+  plot_hor_size = yMax - yMin
 
   ;start and end frames
   iBegin = 1
-  iEnd =  660
+  iEnd =  3
 
 
   ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 513
-  iEnd_ppulse = 614
+  ;iBegin_ppulse = 513
+  ;iEnd_ppulse = 614
 
 
   CD, datapath
@@ -61,10 +64,14 @@ PRO driver_an_2022fThresholds_pmap
     
     
     p = plot(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], LINESTYLE = 'none',  $
-      SYMBOL = 'dot', ASPECT_RATIO = 1, SYM_SIZE = 3, SYM_FILLED = 1)
-
-    stop
+      SYMBOL = 'dot', ASPECT_RATIO = 1, SYM_SIZE = 3, SYM_FILLED = 1, $
+      Margin = [0.01,0.01,0.01,0.01], $
+       DIMENSIONS = [plot_hor_size, plot_hor_size * screen_ratio], /CURRENT)
+    p.save, fname
+    w = p.WINDOW
+    w.erase
 
   ENDFOR
+  ;p.close
 
 END
