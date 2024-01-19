@@ -62,11 +62,12 @@ PRO driver_an_2022fThresholds_pmap
     fname = STRCOMPRESS(coreName+string(myFrame,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
     indMyFrame = WHERE(s_ROI.iFrame eq myFrame)
     
-    
+    curTitle = "particle map for frame"+string(myFrame)
     p = plot(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], LINESTYLE = 'none',  $
-      SYMBOL = 'dot', ASPECT_RATIO = 1, SYM_SIZE = 3, SYM_FILLED = 1, $
-      Margin = [0.05,0.05,0.05,0.05], $
-       DIMENSIONS = [plot_hor_size, plot_hor_size * screen_ratio], /CURRENT)
+      SYMBOL = 'dot', ASPECT_RATIO = 1, SYM_SIZE = 5, SYM_FILLED = 1, $
+      Margin = [0.05,0.05,0.05,0.10], $
+       DIMENSIONS = [plot_hor_size, plot_hor_size * screen_ratio], $
+       TITLE = curTitle, /CURRENT)
     p.save, fname
     w = p.WINDOW
     w.erase
