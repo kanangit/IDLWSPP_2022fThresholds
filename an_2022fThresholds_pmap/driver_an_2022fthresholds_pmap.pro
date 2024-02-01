@@ -17,8 +17,11 @@ PRO driver_an_2022fThresholds_pmap
   plot_hor_size = yMax - yMin
 
   ;start and end frames
-  iBegin = 1
-  iEnd =  3
+;  iBegin = 415
+;  iEnd =  584
+
+  iBegin = 500
+  iEnd =  510
 
 
   ;start and end frames for pulse postition fitting:
@@ -64,11 +67,12 @@ PRO driver_an_2022fThresholds_pmap
     
     curTitle = "particle map for frame"+string(myFrame)
     p = plot(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], LINESTYLE = 'none',  $
-      SYMBOL = 'dot', ASPECT_RATIO = 1, SYM_SIZE = 5, SYM_FILLED = 1, $
+      XRANGE = [yMin, yMax], YRANGE = [leftBorder, rightBorder], $
+      SYMBOL = 'dot', ASPECT_RATIO = 1, SYM_SIZE = 6, SYM_FILLED = 1, $
       Margin = [0.05,0.05,0.05,0.10], $
        DIMENSIONS = [plot_hor_size, plot_hor_size * screen_ratio], $
        TITLE = curTitle, /CURRENT)
-    p.save, fname
+    p.save, fname, WIDTH = ROUND(2 * plot_hor_size), LENGTH = ROUND(2 * plot_hor_size * screen_ratio) 
     w = p.WINDOW
     w.erase
 
