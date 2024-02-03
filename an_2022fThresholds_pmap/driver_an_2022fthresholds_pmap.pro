@@ -1,9 +1,9 @@
 PRO driver_an_2022fThresholds_pmap
 
 
-  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid57\20240201forP_2022fThresholds_pmap\01_an_2022fThresholds_pmap\'
+  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid58\20240203forP_2022fThresholds_pmap\01_an_2022fThresholds_pmap\'
 
-  curDate='20240201'
+  curDate='20240203'
   print, curDate
   print, datapath
   coreName = STRCOMPRESS('particles_map_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
@@ -17,9 +17,9 @@ PRO driver_an_2022fThresholds_pmap
   plot_hor_size = yMax - yMin
 
   ;start and end frames
-  iBegin = 417
-  iEnd =  591
-
+  
+  iBegin = 472
+  iEnd =  652
 
   ;start and end frames for pulse postition fitting:
   ;iBegin_ppulse = 513
