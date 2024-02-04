@@ -1,7 +1,7 @@
 PRO driver_an_2022fThresholds_pmap
 
 
-  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid58\20240203forP_2022fThresholds_pmap\01_an_2022fThresholds_pmap\'
+  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid59\20240203forP_2022fThresholds_pmap\01_an_2022fThresholds_pmap\'
 
   curDate='20240203'
   print, curDate
@@ -18,8 +18,8 @@ PRO driver_an_2022fThresholds_pmap
 
   ;start and end frames
   
-  iBegin = 472
-  iEnd =  652
+  iBegin = 502
+  iEnd =  730
 
   ;start and end frames for pulse postition fitting:
   ;iBegin_ppulse = 513
