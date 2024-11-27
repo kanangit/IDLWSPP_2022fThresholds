@@ -15,9 +15,9 @@
 ;-
 PRO driver_an_fp_2018piston_frontPos
 
-  datapath = '\\128.255.35.174\expAnalysisBackup\c_14226_vid57\20190115fp_2018piston_pulsePos\02b_code_an_allProfilesOneFrame_fp_2018piston'
+  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20241127forP_2022fThresholds_check_PulsePos\'
   
-  curDate='20190115'
+  curDate='20241127'
   
   
   ;define borders of the region of interest
