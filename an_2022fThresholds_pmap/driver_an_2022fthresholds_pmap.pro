@@ -1,9 +1,9 @@
 PRO driver_an_2022fThresholds_pmap
 
 
-  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid61\20240205forP_2022fThresholds_pmap\01_an_2022fThresholds_pmap\'
+  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20241127forP_2022fThresholds_pmap_withCoords\01_an_2022fThresholds_pmap\'
 
-  curDate='20240205'
+  curDate='20241127'
   print, curDate
   print, datapath
   coreName = STRCOMPRESS('particles_map_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
@@ -18,8 +18,8 @@ PRO driver_an_2022fThresholds_pmap
 
   ;start and end frames
   
-  iBegin = 583
-  iEnd =  1027
+  iBegin = 415
+  iEnd =  584
 
   ;start and end frames for pulse postition fitting:
   ;iBegin_ppulse = 513
@@ -60,6 +60,7 @@ PRO driver_an_2022fThresholds_pmap
 
   FOR myFrame = iBegin, iEnd DO BEGIN
     fname = STRCOMPRESS(coreName+string(myFrame,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
+    fnameCSV = STRCOMPRESS(coreName+string(myFrame,FORMAT='(I04)')+'.csv', /REMOVE_ALL)
     indMyFrame = WHERE(s_ROI.iFrame eq myFrame)
     
     curTitle = "particle map for frame"+string(myFrame)
@@ -72,6 +73,7 @@ PRO driver_an_2022fThresholds_pmap
     p.save, fname, WIDTH = ROUND(2 * plot_hor_size), LENGTH = ROUND(2 * plot_hor_size * screen_ratio) 
     w = p.WINDOW
     w.erase
+    retp = print2arrays(fnameCSV, s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame])
 
   ENDFOR
   ;p.close
