@@ -4,7 +4,7 @@
 PRO driver_an_2022fThresholds_vrn_forFig
   ;
 
-  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20241128forP_2022fThresholds_fig_corr\03_code_an_2022fThresholds_vrn_forFig\'
+  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20241128forP_2022fThresholds_fig_corr\04_code_an_2022fThresholds_vrn_forFig_f544\'
 
   curDate='20241128'
   print, curDate
@@ -17,11 +17,11 @@ PRO driver_an_2022fThresholds_vrn_forFig
   yMax = 1200.0d
 
   ;frame of interest
-  myFrame = 326
+  myFrame = 544
 
 
   ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 325
+  iBegin_ppulse = 521
   iEnd_ppulse = 624
 
  
