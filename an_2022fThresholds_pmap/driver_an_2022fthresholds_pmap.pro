@@ -1,7 +1,7 @@
 PRO driver_an_2022fThresholds_pmap
 
 
-  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20241127forP_2022fThresholds_pmap_withCoords\01_an_2022fThresholds_pmap\'
+  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20241127forP_2022fThresholds_pmap_withCoordsCorrected\01_an_2022fThresholds_pmap\'
 
   curDate='20241127'
   print, curDate
@@ -11,7 +11,7 @@ PRO driver_an_2022fThresholds_pmap
   leftBorder = 600.0d
   rightBorder= 1000.0d;
   yMin = 0.0d;
-  yMax = 1000.0d
+  yMax = 1200.0d
   
   screen_ratio =  DOUBLE(rightBorder - leftBorder) / DOUBLE(yMax - yMin)
   plot_hor_size = yMax - yMin

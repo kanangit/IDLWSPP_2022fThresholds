@@ -18,10 +18,10 @@ cam_resol = 0.0254303 ;mm/px
   plot_ybegin = 600;
   plot_yend = 1000;
   plot_xbegin = 0
-  plot_xend = 1000
+  plot_xend = 1200
 
   preshock_offset = 50.0
-  postshock_offset = 50.0
+  postshock_offset = 50.0 
 
   textHeight = 525
 
@@ -213,7 +213,7 @@ device, FONT_SIZE = 12, /TIMES
 device, color=1, bits_per_pixel=24
 device, /encapsulated
 
-plot,XmyFrame_mm,YmyFrame_mm,psym=8, SYMSIZE = 0.5, isotropic=1, $
+plot,XmyFrame_mm,YmyFrame_mm,psym=8, SYMSIZE = 0.2, isotropic=1, $
     xrange = [plot_xbegin_mm,plot_xend_mm], yrange = [plot_ybegin_mm,plot_yend_mm], $
     xstyle = 1, $
     ystyle=1,title = 'Particle Map', thick = 1.0, charthick = 2
