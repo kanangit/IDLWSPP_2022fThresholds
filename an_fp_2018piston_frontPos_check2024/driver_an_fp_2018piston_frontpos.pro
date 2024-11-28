@@ -123,7 +123,7 @@ p = plot(ybins, pAmp, LINESTYLE = 'none',  $
     w.erase
     retp = print2arrays(fnameCSV, ybins, pAmp)
     
-    
+   curTitle = "particles map for frame"+string(myFrame) 
     
     pp = plot(s_ROI.X[indf], s_ROI.Y[indf], LINESTYLE = 'none',  $
       XRANGE = [yMin, yMax], YRANGE = [leftBorder, rightBorder], $
