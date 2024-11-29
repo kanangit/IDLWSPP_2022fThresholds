@@ -1,11 +1,8 @@
-;v. 1.2. Added range selection for pulse position.
+PRO driver_an_2022fThresholds_vrn_AsInPaper
 
-PRO driver_an_2022fThresholds_vrn
-;
+  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220527forP_2022fThresholds\01_code_an_2022fThresholds_vrn\'
 
-  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20241129forP_2022fThresholds_vrn_corr\01_code_an_2022fThresholds_vrn\'
-
-  curDate='20230622'
+  curDate='20220527'
   print, curDate
   print, datapath
   coreName = STRCOMPRESS('voronoiMap_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
@@ -13,16 +10,11 @@ PRO driver_an_2022fThresholds_vrn
   leftBorder = 600.0d
   rightBorder= 1000.0d;
   yMin = 0.0d;
-  yMax = 1200.0d
+  yMax = 1000.0d
 
   ;start and end frames
-  iBegin = 1
-  iEnd =  660
-  
-  
-  ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 513
-  iEnd_ppulse = 614
+  iBegin = 300
+  iEnd =  550
 
 
   CD, datapath
@@ -32,8 +24,7 @@ PRO driver_an_2022fThresholds_vrn
   RESTORE, filenam
 
   s_pulsePos = read_pulse_pos()
-  indPpulseFilt = WHERE(s_pulsePos.time GE iBegin_ppulse AND s_pulsePos.time LE iEnd_ppulse)
-  coeffs = POLY_FIT(s_pulsePos.time[indPpulseFilt],s_pulsePos.position[indPpulseFilt],1,/DOUBLE)
+  coeffs = POLY_FIT(s_pulsePos.time,s_pulsePos.position,1,/DOUBLE)
 
   CD, '..'
   FILE_MKDIR, 'outputs'
@@ -64,7 +55,7 @@ PRO driver_an_2022fThresholds_vrn
     fname = STRCOMPRESS(coreName+string(myFrame,FORMAT='(I04)')+'.tif', /REMOVE_ALL)
     indMyFrame = WHERE(s_ROI.iFrame eq myFrame)
     pulsePos = coeffs[0] + myFrame * coeffs[1]
-    dratio = oldplot_defects(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], pulsePos, fname)
+    dratio = oldplot_defects_asip(s_ROI.X[indMyFrame], s_ROI.Y[indMyFrame], pulsePos, fname)
 
   ENDFOR
 END
