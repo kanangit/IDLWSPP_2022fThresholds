@@ -1,6 +1,6 @@
 pro driver_an_2022fThresholds_plgn_forFig
 
-  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220615forP_2022fThresholds_fig\07_code_an_2022fThresholds_plgn_forFig_f544\'
+  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20241128forP_2022fThresholds_fig_corr\06_code_an_2022fThresholds_plgn_forFig_f326\'
 
 
   ;start and end frames for pulse postition fitting:
@@ -13,11 +13,11 @@ pro driver_an_2022fThresholds_plgn_forFig
   leftBorder = 600.0d
   rightBorder= 1000.0d;
   yMin = 0.0d;
-  yMax = 1000.0d
+  yMax = 1200.0d
 
 
   ;frame of interest
-  myFrame = 544
+  myFrame = 326
 
   ;start and end frames for pulse postition fitting:
   iBegin_ppulse = 521
@@ -60,10 +60,10 @@ pro driver_an_2022fThresholds_plgn_forFig
 
 
 
-  plot_ybegin = 600;
-  plot_yend = 1000;
-  plot_xbegin = 0
-  plot_xend = 1000
+  plot_ybegin = leftBorder
+  plot_yend = rightBorder
+  plot_xbegin = 0.0d
+  plot_xend = yMax
 
 
   preshock_offset = 50.0
@@ -215,7 +215,7 @@ pro driver_an_2022fThresholds_plgn_forFig
   ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 
 
-  plots, shockfront_indiv_x_mm, shockfront_indiv_y_mm, COLOR = 60, THICK = 2
+ ; plots, shockfront_indiv_x_mm, shockfront_indiv_y_mm, COLOR = 60, THICK = 2
 
   scaled = TVRD()
   TVLCT, r, g, b, /Get
@@ -312,7 +312,7 @@ pro driver_an_2022fThresholds_plgn_forFig
   ;plots, postshock_right_x, postshock_right_y, COLOR = 47, THICK = 2
   ;plots, preshock_left_x, preshock_left_y, COLOR = 254, THICK = 2
 
-  plots, shockfront_indiv_x_mm, shockfront_indiv_y_mm, COLOR = 60, THICK = 2
+  ;plots, shockfront_indiv_x_mm, shockfront_indiv_y_mm, COLOR = 60, THICK = 2
 
   device, /close_file
   set_plot, originalDevice
