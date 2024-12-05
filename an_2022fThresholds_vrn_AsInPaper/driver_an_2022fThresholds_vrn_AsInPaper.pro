@@ -1,8 +1,8 @@
 PRO driver_an_2022fThresholds_vrn_AsInPaper
 
-  datapath = 'e:\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20220527forP_2022fThresholds\01_code_an_2022fThresholds_vrn\'
+  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid61\20241201forP_2022fThresholds_vrn_corr\01_code_an_2022fThresholds_vrn_AsInPaper\'
 
-  curDate='20220527'
+  curDate='20241129'
   print, curDate
   print, datapath
   coreName = STRCOMPRESS('voronoiMap_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
@@ -10,12 +10,15 @@ PRO driver_an_2022fThresholds_vrn_AsInPaper
   leftBorder = 600.0d
   rightBorder= 1000.0d;
   yMin = 0.0d;
-  yMax = 1000.0d
+  yMax = 1200.0d
 
   ;start and end frames
-  iBegin = 300
-  iEnd =  550
+  iBegin = 1; 1st submission: iBegin = 500
+  iEnd =  1320
 
+  ;start and end frames for pulse postition fitting:
+  iBegin_ppulse = 710
+  iEnd_ppulse = 1176
 
   CD, datapath
   CD, 'inputs'
@@ -24,7 +27,8 @@ PRO driver_an_2022fThresholds_vrn_AsInPaper
   RESTORE, filenam
 
   s_pulsePos = read_pulse_pos()
-  coeffs = POLY_FIT(s_pulsePos.time,s_pulsePos.position,1,/DOUBLE)
+  indPpulseFilt = WHERE(s_pulsePos.time GE iBegin_ppulse AND s_pulsePos.time LE iEnd_ppulse)
+  coeffs = POLY_FIT(s_pulsePos.time[indPpulseFilt],s_pulsePos.position[indPpulseFilt],1,/DOUBLE)
 
   CD, '..'
   FILE_MKDIR, 'outputs'

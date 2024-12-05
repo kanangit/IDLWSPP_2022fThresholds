@@ -16,12 +16,15 @@ FUNCTION oldplot_defects_asip, XmyFrame, YmyFrame, shockPos, filename
   plot_ybegin = 600;
   plot_yend = 1000;
   plot_xbegin = 0
-  plot_xend = 1250
+  plot_xend = 1200
+  
 
   preshock_offset = 50.0
   postshock_offset = 50.0
 
   textHeight = 525
+
+ screenWidth = 1400
 
   postshock_right_border = shockPos - preshock_offset
   preshock_left_border = shockPos + postshock_offset
@@ -35,7 +38,7 @@ FUNCTION oldplot_defects_asip, XmyFrame, YmyFrame, shockPos, filename
   preshock_left_y = [textHeight, plot_yend]
 
 
-  screenWidth = forceXlen
+ 
   ratio = DOUBLE(plot_yend - plot_ybegin)/DOUBLE(plot_xend - plot_xbegin)
 
   window, 2, xsize = screenWidth, ysize =screenWidth*ratio
