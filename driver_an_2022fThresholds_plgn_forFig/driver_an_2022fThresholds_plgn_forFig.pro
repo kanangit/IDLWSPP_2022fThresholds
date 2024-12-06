@@ -1,11 +1,11 @@
 pro driver_an_2022fThresholds_plgn_forFig
 
-  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20241128forP_2022fThresholds_fig_corr\06_code_an_2022fThresholds_plgn_forFig_f326\'
+  datapath = 'e:\ag\uiowa2020\oneDrive\bDocs\expAnalysisBackup\c_14226_vid58\20241205forP_2022fThresholds_plgn_fig2_corr\08_driver_an_2022fThresholds_plgn_forFig\'
 
 
   ;start and end frames for pulse postition fitting:
 
-  curDate='20220615'
+  curDate='20241205'
   print, curDate
   print, datapath
   coreName = STRCOMPRESS('pgnConstr_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
@@ -17,11 +17,11 @@ pro driver_an_2022fThresholds_plgn_forFig
 
 
   ;frame of interest
-  myFrame = 326
+  myFrame = 609
 
   ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 521
-  iEnd_ppulse = 624
+  iBegin_ppulse = 582
+  iEnd_ppulse = 685
 
 
 
