@@ -4,9 +4,9 @@
 PRO driver_an_2022fThresholds_vrn_forFig
   ;
 
-  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid56\20241128forP_2022fThresholds_fig_corr\04_code_an_2022fThresholds_vrn_forFig_f544\'
+  datapath = 'e:\ag\uiowa2020\oneDrive\bDocs\expAnalysisBackup\c_14226_vid58\20241205forP_2022fThresholds_fig2_corr\07_code_an_2022fThresholds_plgn_forFig2_f609\'
 
-  curDate='20241128'
+  curDate='20241205'
   print, curDate
   print, datapath
   coreName = STRCOMPRESS('voronoiMap_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
@@ -17,7 +17,7 @@ PRO driver_an_2022fThresholds_vrn_forFig
   yMax = 1200.0d
 
   ;frame of interest
-  myFrame = 544
+  myFrame = 609
 
 
   ;start and end frames for pulse postition fitting:
