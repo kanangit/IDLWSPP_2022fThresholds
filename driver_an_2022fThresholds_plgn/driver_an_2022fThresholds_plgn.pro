@@ -1,16 +1,16 @@
 pro driver_an_2022fThresholds_plgn
 
-  datapath = 'C:\Users\siomau\OneDrive - University of Iowa\bDocs\expAnalysisBackup\c_14226_vid61\20241201forP_2022fThresholds_plgnSM_corr\01_code_an_2022fThresholds_plgn\'
+  datapath = 'e:\ag\uiowa2020\oneDrive\bDocs\expAnalysisBackup\c_14226_vid60\20241207forP_2022fThresholds_plgn_corr\01_code_an_2022fThresholds_plgn\'
   
   ;start and end frames
-  iBegin = 1033
+  iBegin = 1
   iEnd =  1150
   
   ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 710
-  iEnd_ppulse = 1176
+  iBegin_ppulse = 784
+  iEnd_ppulse = 935
 
-  curDate='20241201'
+  curDate='20241207'
   print, curDate
   print, datapath
   coreName = STRCOMPRESS('pgnConstr_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
