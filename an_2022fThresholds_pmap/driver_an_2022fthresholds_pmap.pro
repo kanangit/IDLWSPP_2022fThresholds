@@ -1,7 +1,7 @@
 PRO driver_an_2022fThresholds_pmap
 
 
-  datapath = 'e:\ag\uiowa2020\oneDrive\bDocs\expAnalysisBackup\c_14226_vid58\20241208forP_2022fThresholds_pmap_corr\01_code_an_2022fThresholds_pmap\'
+  datapath = 'e:\ag\uiowa2020\oneDrive\bDocs\expAnalysisBackup\c_14226_vid57\20241208forP_2022fThresholds_pmap_corr\01_code_an_2022fThresholds_pmap\'
 
   curDate='20241208'
   print, curDate
