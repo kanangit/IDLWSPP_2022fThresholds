@@ -1,8 +1,8 @@
 PRO driver_an_2022fThresholds_vrn_AsInPaper
 
-  datapath = 'e:\ag\uiowa2020\oneDrive\bDocs\expAnalysisBackup\c_14226_vid59\20241207forP_2022fThresholds_vrn_corr\01_code_an_2022fThresholds_vrn_AsInPaper\'
+  datapath = 'e:\ag\uiowa2020\oneDrive\bDocs\expAnalysisBackup\c_14226_vid58\20241208forP_2022fThresholds_vrn_corr\01_code_an_2022fThresholds_vrn_AsInPaper\'
 
-  curDate='20241207'
+  curDate='20241208'
   print, curDate
   print, datapath
   coreName = STRCOMPRESS('voronoiMap_' + STRING(curDate) + 'ff_', /REMOVE_ALL)
@@ -17,8 +17,8 @@ PRO driver_an_2022fThresholds_vrn_AsInPaper
   iEnd =  1000
 
   ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 661
-  iEnd_ppulse = 777
+  iBegin_ppulse = 582
+  iEnd_ppulse = 685
 
   CD, datapath
   CD, 'inputs'
