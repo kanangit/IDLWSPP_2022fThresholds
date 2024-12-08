@@ -1,6 +1,6 @@
 PRO driver_an_2022fThresholds_vrn_AsInPaper
 
-  datapath = 'e:\ag\uiowa2020\oneDrive\bDocs\expAnalysisBackup\c_14226_vid60\20241207forP_2022fThresholds_vrn_corr\01_code_an_2022fThresholds_vrn_AsInPaper\'
+  datapath = 'e:\ag\uiowa2020\oneDrive\bDocs\expAnalysisBackup\c_14226_vid59\20241207forP_2022fThresholds_vrn_corr\01_code_an_2022fThresholds_vrn_AsInPaper\'
 
   curDate='20241207'
   print, curDate
@@ -14,11 +14,11 @@ PRO driver_an_2022fThresholds_vrn_AsInPaper
 
   ;start and end frames
   iBegin = 1; 1st submission: iBegin = 500
-  iEnd =  1320
+  iEnd =  1000
 
   ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 784
-  iEnd_ppulse = 935
+  iBegin_ppulse = 661
+  iEnd_ppulse = 777
 
   CD, datapath
   CD, 'inputs'
