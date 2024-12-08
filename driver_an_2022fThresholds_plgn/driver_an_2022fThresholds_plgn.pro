@@ -1,14 +1,14 @@
 pro driver_an_2022fThresholds_plgn
 
-  datapath = 'e:\ag\uiowa2020\oneDrive\bDocs\expAnalysisBackup\c_14226_vid57\20241208forP_2022fThresholds_plgn_corr\'
+  datapath = 'e:\ag\uiowa2020\oneDrive\bDocs\expAnalysisBackup\c_14226_vid56\20241208forP_2022fThresholds_vrn_corr\01_code_an_2022fThresholds_vrn_AsInPaper\'
   
   ;start and end frames
-  iBegin = 146
-  iEnd =  630
+  iBegin = 1
+  iEnd =  660
   
   ;start and end frames for pulse postition fitting:
-  iBegin_ppulse = 522
-  iEnd_ppulse = 624
+  iBegin_ppulse = 513
+  iEnd_ppulse = 614
 
   curDate='20241208'
   print, curDate
