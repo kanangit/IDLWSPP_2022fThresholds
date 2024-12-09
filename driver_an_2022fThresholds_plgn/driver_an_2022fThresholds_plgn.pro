@@ -1,6 +1,6 @@
 pro driver_an_2022fThresholds_plgn
 
-  datapath = 'e:\ag\uiowa2020\oneDrive\bDocs\expAnalysisBackup\c_14226_vid56\20241208forP_2022fThresholds_vrn_corr\01_code_an_2022fThresholds_vrn_AsInPaper\'
+  datapath = 'e:\ag\uiowa2020\oneDrive\bDocs\expAnalysisBackup\c_14226_vid56\20241208forP_2022fThresholds_plgn_corr\01_code_an_2022fThresholds_plgn\'
   
   ;start and end frames
   iBegin = 1
